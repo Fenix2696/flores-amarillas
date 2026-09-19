@@ -3,146 +3,371 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f5eb">
-  <meta name="description" content="Hay personas que se sienten como el sol. Un ramo de flores amarillas y una pequeña carta, solo para ti.">
-  <title>Un poquito de sol, para ti · Flores amarillas</title>
+  <meta name="theme-color" content="#f7f2e8">
+  <meta name="description" content="Este 21 de septiembre guardé algo bonito para ti. Toca el regalo y deja que florezca.">
+  <title>Tengo algo para ti · 21 de septiembre</title>
   <style>
-    :root{--paper:#f8f5eb;--ink:#333e2b;--muted:#72745f;--gold:#ae771e;--line:#dedccc;--ease:cubic-bezier(.22,1,.36,1)}
-    *{box-sizing:border-box}html{overflow-x:clip}body{margin:0;overflow-x:clip;background:var(--paper);color:var(--ink);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
-    body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23000' filter='url(%23n)' opacity='.5' d='M0 0h180v180H0z'/%3E%3C/svg%3E")}
-    button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:6px}button:disabled{opacity:.5;cursor:wait}.skip{position:absolute;top:-100px;left:20px;z-index:20;background:var(--paper);padding:10px}.skip:focus{top:8px}
-    .shell{width:min(1240px,calc(100% - 104px));margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 0;border-bottom:1px solid var(--line)}
-    .brand{display:flex;align-items:center;gap:12px;font-family:Georgia,serif;font-size:20px;font-style:italic}.brand svg{width:28px;height:28px}.top-right{display:flex;align-items:center;gap:28px}.micro{font-size:10px;letter-spacing:.2em;text-transform:uppercase}.motion{border:1px solid var(--line);border-radius:50%;width:37px;height:37px;background:transparent;display:grid;place-items:center}.motion svg{width:14px;height:14px}.motion .play{display:none}[data-paused="true"] .motion .pause{display:none}[data-paused="true"] .motion .play{display:block}
-    .hero{display:grid;grid-template-columns:1fr 1.03fr;gap:24px;align-items:center;min-height:720px;padding:48px 0 34px}.intro{position:relative;z-index:2;padding-bottom:22px}.eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold);margin:0 0 28px}.eyebrow::before{content:"";width:30px;height:1px;background:var(--gold)}
-    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(48px,5.6vw,77px);font-weight:400;line-height:1.07;letter-spacing:-.055em;margin:0 0 28px}h1 em{color:var(--gold);font-weight:400}.description{max-width:335px;color:var(--muted);font-size:15px;line-height:1.9;margin:0 0 32px}.primary{border:1px solid var(--ink);background:var(--ink);color:#fffdf4;border-radius:3px;padding:15px 21px;display:inline-flex;align-items:center;gap:30px;transition:background .25s,transform .25s}.primary:hover{background:#4b583b;transform:translateY(-2px)}.primary span{font-size:20px;line-height:1}.quiet{display:block;margin-top:15px;font-size:11px;color:var(--muted);letter-spacing:.02em}.intro>*{animation:appear 1.2s var(--ease) both}.intro>:nth-child(2){animation-delay:.12s}.intro>:nth-child(3){animation-delay:.24s}.intro>:nth-child(4){animation-delay:.36s}
-    .scene{position:relative;isolation:isolate;min-width:0;perspective:900px;text-align:center}.halo{position:absolute;inset:8% -4% 13%;z-index:-1;border-radius:50%;background:radial-gradient(ellipse,#ecd38550 0%,#ecdfb833 45%,transparent 70%)}.orbit{position:absolute;inset:6% 4% 16%;border:1px solid #a7924926;border-radius:50%;z-index:-1;transform:rotate(-17deg)}.orbit::after{content:"";position:absolute;inset:15px -14px;border:1px solid #a7924914;border-radius:50%;transform:rotate(32deg)}
-    .botanical{display:block;width:100%;height:auto;overflow:visible;transform:rotateY(var(--rx,0deg)) rotateX(var(--ry,0deg));transition:transform .7s var(--ease)}.stem{fill:none;stroke:#637348;stroke-width:3.2;stroke-linecap:round}.vein{fill:none;stroke:#bbbd77;stroke-width:.75;opacity:.65}.draw{stroke-dasharray:1;stroke-dashoffset:0;animation:grow 2.7s var(--ease) both;animation-delay:var(--delay,0s)}.leaf{transform-box:fill-box;transform-origin:bottom center;animation:leaf-open 2.6s var(--ease) both;animation-delay:var(--delay,.4s)}.petal{animation:unfold 2.1s var(--ease) both;animation-delay:var(--delay,1s);transform-origin:0 0}.heart-of-flower{animation:center-in 1.8s var(--ease) both;animation-delay:var(--delay,1.6s)}.ribbon{animation:appear 1.6s ease both;animation-delay:2.1s}.spark{animation:glow 5s ease-in-out infinite;animation-delay:var(--delay,0s)}
-    .scene-caption{display:flex;align-items:center;justify-content:center;gap:15px;margin-top:-4px;color:var(--muted);font:italic 17px Georgia,serif}.scene-caption::before,.scene-caption::after{content:"";width:25px;height:1px;background:#c6b98e}.replay{border:0;border-bottom:1px solid #b5ac8d;background:none;font-size:11px;letter-spacing:.03em;padding:4px 0;margin-top:19px;color:#696a54}.replay:hover{color:var(--gold)}
-    .bottom{border-top:1px solid var(--line);padding:23px 0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;color:var(--muted);font-size:11px}.bottom .heart{color:var(--gold);font-size:17px;padding:0 5px}.bottom .micro{font-size:9px}.note{display:flex;align-items:center;gap:9px}.note::before{content:"";height:5px;width:5px;background:#aa8540;border-radius:50%}
-    dialog{border:1px solid #e2dac4;background:#fcf9ef;color:var(--ink);padding:0;width:min(500px,calc(100% - 32px));max-height:90dvh;overflow:auto;box-shadow:0 30px 120px #2026193d}dialog::backdrop{background:#27301dcc;backdrop-filter:blur(6px)}dialog[open]{animation:letter-enter .6s var(--ease)}.close{position:absolute;right:15px;top:12px;border:0;background:none;font-size:25px;font-weight:300;width:36px;height:36px;z-index:2;color:var(--muted)}.letter-top{margin:38px 32px 0;border-bottom:1px solid var(--line);padding-bottom:18px;display:flex;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:.16em;text-transform:uppercase}.envelope{text-align:center;padding:40px 30px 46px}.envelope h2{font:italic 38px/1.2 Georgia,serif;margin:0 0 15px}.envelope p{color:var(--muted);font-size:13px}.seal{position:relative;margin:18px auto 6px;width:78px;height:78px;border:5px double #b16f33;border-radius:50%;background:radial-gradient(at 30% 20%,#bd803b,#945321);color:#f9d991;box-shadow:0 4px 0 #7a441e,0 8px 15px #5a331533;font:32px Georgia,serif;transition:transform .3s,box-shadow .3s}.seal:hover{transform:rotate(-8deg) scale(1.06);box-shadow:0 4px 0 #7a441e,0 10px 20px #5a331540}.letter-body{padding:30px 38px 40px;animation:appear 1s var(--ease)}.letter-body h2{font:italic 39px/1.2 Georgia,serif;margin:5px 0 23px;color:var(--gold)}.letter-body p{font:17px/1.9 Georgia,serif;margin:0 0 18px}.letter-body .sign{font-style:italic;color:var(--gold);margin:30px 0 0;font-size:23px}.letter-body .ps{font:10px/1.6 ui-sans-serif,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:12px 0 0}[hidden]{display:none!important}
-    @keyframes grow{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes unfold{0%{transform:scale(.12,.02);opacity:0}25%{opacity:1}75%{transform:scale(1.025,1.04)}100%{transform:scale(1);opacity:1}}@keyframes leaf-open{from{transform:scale(.02) rotate(-20deg);opacity:0}to{transform:scale(1);opacity:1}}@keyframes center-in{from{opacity:0;transform:scale(.1)}to{opacity:1;transform:scale(1)}}@keyframes appear{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}@keyframes glow{0%,100%{opacity:.15;transform:translateY(0)}50%{opacity:.65;transform:translateY(-8px)}}@keyframes letter-enter{from{opacity:0;transform:translateY(30px) rotate(-2deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
-    [data-paused="true"] #bouquet *{animation-play-state:paused!important}[data-paused="true"] .botanical{transform:none!important}.reduced .replay{display:none}
-    @media(min-width:1450px){.hero{min-height:790px}}@media(max-width:900px){.shell{width:calc(100% - 64px)}.hero{min-height:620px;gap:0}.top-right>.micro{display:none}h1{font-size:56px}.description{font-size:14px}.primary{gap:15px;padding:14px 16px}}
-    @media(max-width:650px){.shell{width:calc(100% - 40px)}.topbar{padding:19px 0}.brand{font-size:19px}.hero{grid-template-columns:1fr;padding:40px 0 30px;gap:5px;min-height:0}.intro{padding:0}.eyebrow{font-size:9px;margin-bottom:21px}h1{font-size:clamp(45px,11.8vw,68px);margin-bottom:20px}.description{max-width:320px;margin-bottom:25px}.scene{width:min(440px,100%);margin:0 auto}.botanical{margin-top:8px}.scene-caption{font-size:16px}.replay{margin-top:15px}.bottom{align-items:flex-start;flex-direction:column;gap:8px;padding:20px 0}.bottom>.micro{font-size:8px}.letter-body{padding:28px}.letter-top{margin-left:28px;margin-right:28px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.botanical{transform:none!important}.replay{display:none}}
+    :root { color-scheme:light; --paper:#f7f2e8; --ink:#473f38; --muted:#827368; --gold:#9a733c; }
+    * { box-sizing:border-box; }
+    html { min-height:100%; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:14px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; background:radial-gradient(ellipse at 50% 50%,#fffdf3 0,#f7f2e8 52%,#eee6d8 100%); }
+    button { font:inherit; color:inherit; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+    button:focus-visible { outline:2px solid #9e7352; outline-offset:6px; }
+    button:disabled { cursor:default; }
+    [hidden] { display:none!important; }
+    .experience { min-height:100svh; width:100%; padding:28px 16px 24px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    .heading { text-align:center; position:relative; z-index:1; width:100%; }
+    .occasion { color:var(--gold); letter-spacing:.25em; font-size:10px; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:17px; margin:0 0 18px; }
+    .occasion::before,.occasion::after { content:""; width:27px; height:1px; background:#b496684f; }
+    h1 { font:400 clamp(34px,4.4vw,53px)/1.13 Georgia,"Times New Roman",serif; letter-spacing:-.035em; margin:0; min-height:1.15em; }
+    h1 em { font-weight:400; color:#99703c; }
+    .subtitle { margin:13px 0 0; color:var(--muted); font:italic 16px/1.6 Georgia,serif; min-height:26px; }
+    .stage { position:relative; flex:none; width:min(760px,calc((100svh - 305px) * 1.16923),100%); min-width:260px; }
+    .art { display:block; width:100%; height:auto; aspect-ratio:760/650; overflow:visible; }
+    .gift-hit { position:absolute; left:24%; top:32%; width:53%; height:46%; border:0; border-radius:36%; cursor:pointer; background:transparent; }
+    .gift-hit:focus-visible { outline:1px dashed #ad835b; outline-offset:5px; }
+    .gift-hit:not(:disabled):hover { background:radial-gradient(ellipse,#ffffff13,transparent 65%); }
+    .controls { text-align:center; min-height:75px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:8px; position:relative; z-index:2; }
+    .hint { margin:0; color:#766557; font-size:12px; letter-spacing:.04em; }
+    .actions { display:flex; align-items:center; justify-content:center; gap:20px; min-height:36px; }
+    .quiet { padding:7px 4px; border:0; background:none; font-size:11px; color:#827467; cursor:pointer; }
+    .quiet:hover { color:#523f2d; }
+    .replay { padding:8px 0; border:0; border-bottom:1px solid #bba58a; background:transparent; color:#76614b; font-size:12px; cursor:pointer; }
+    .replay svg { width:12px; height:12px; margin-right:8px; vertical-align:-1px; }
+    .signature { font:italic 14px Georgia,serif; color:#947550; margin:1px 0 0; }
+    .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+    .petal { stroke:#ae731d; stroke-width:.5; stroke-linejoin:round; }
+    .petal-vein { fill:none; stroke:#fff3ad; stroke-width:.65; opacity:.43; }
+    .stem { fill:none; stroke:url(#stem-color); stroke-width:3.1; stroke-linecap:round; }
+    .stem-light { fill:none; stroke:#becb87; stroke-width:.65; opacity:.65; }
+    noscript { display:block; max-width:340px; margin:auto; text-align:center; color:var(--muted); }
+    @media(max-width:600px) {
+      .experience { padding:26px 10px 20px; justify-content:center; }
+      .occasion { font-size:9px; gap:12px; margin-bottom:19px; }
+      h1 { font-size:clamp(31px,8.8vw,43px); }
+      .subtitle { font-size:15px; padding:0 10px; }
+      .stage { width:100%; margin:16px 0 10px; min-width:0; }
+      .controls { min-height:82px; }
+      .hint { font-size:11px; }
+      .quiet,.replay { min-height:40px; }
+    }
+    @media(max-height:650px) and (min-width:601px) {
+      .experience { padding:16px 12px; }
+      .occasion { margin-bottom:8px; }
+      h1 { font-size:33px; }
+      .subtitle { margin-top:8px; font-size:14px; }
+      .stage { width:min(560px,calc((100svh - 210px) * 1.16923)); }
+      .controls { min-height:58px; }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
   </style>
 </head>
 <body>
-  <a class="skip" href="#contenido">Ir al contenido</a>
-  <div class="shell">
-    <header class="topbar">
-      <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="#a77b26" stroke-width="1.3"><path d="M16 20v11M16 26q-9-1-9-7 8 0 9 7"/><ellipse cx="16" cy="10" rx="3" ry="8"/><ellipse cx="16" cy="10" rx="3" ry="8" transform="rotate(60 16 10)"/><ellipse cx="16" cy="10" rx="3" ry="8" transform="rotate(120 16 10)"/></g><circle cx="16" cy="10" r="3" fill="#a77b26"/></svg>un detalle para ti.</div>
-      <div class="top-right"><span class="micro">Las cosas bonitas se sienten</span><button class="motion" id="motion" aria-label="Pausar animaciones" title="Pausar animaciones" aria-pressed="false"><svg class="pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="2"/></svg><svg class="play" viewBox="0 0 16 16" aria-hidden="true"><path d="m5 2 9 6-9 6z" fill="currentColor"/></svg></button></div>
+  <main class="experience" id="experience" data-state="closed">
+    <header class="heading">
+      <p class="occasion">21 de septiembre <span aria-hidden="true">·</span> solo para ti</p>
+      <h1 id="heading">Tengo algo <em>para ti</em></h1>
+      <p class="subtitle" id="subtitle">Hay cosas que no caben en palabras.</p>
     </header>
-    <main id="contenido" class="hero">
-      <section class="intro" aria-labelledby="titulo">
-        <p class="eyebrow micro">Día de las flores amarillas</p>
-        <h1 id="titulo">Hay personas<br>que se sienten<br><em>como el sol.</em></h1>
-        <p class="description">Y luego estás tú.<br>Por eso hoy te guardé un poquito de luz,<br>en forma de flores amarillas.</p>
-        <button class="primary" id="open-letter" aria-haspopup="dialog">Tengo algo que decirte <span aria-hidden="true">↗</span></button>
-        <span class="quiet">Unas flores. Una carta. Y muchas ganas de verte sonreír.</span>
-      </section>
-      <section class="scene" id="scene" aria-label="Un ramo de flores amarillas para ti">
-        <div class="halo" aria-hidden="true"></div><div class="orbit" aria-hidden="true"></div>
-        <svg class="botanical" id="bouquet" viewBox="0 0 560 620" role="img" aria-labelledby="bouquet-title">
-          <title id="bouquet-title">Ramo ilustrado de siete flores amarillas que se abren poco a poco</title>
-          <defs>
-            <linearGradient id="petal-gold" x1="0" y1="1" x2=".65" y2="0"><stop stop-color="#ba741c"/><stop offset=".42" stop-color="#edb52d"/><stop offset="1" stop-color="#f5d879"/></linearGradient>
-            <linearGradient id="petal-light" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#bc861a"/><stop offset=".5" stop-color="#f8cf4f"/><stop offset="1" stop-color="#fff0a4"/></linearGradient>
-            <linearGradient id="leaf-green"><stop stop-color="#3f5936"/><stop offset="1" stop-color="#8e9d66"/></linearGradient>
-            <radialGradient id="center-gold"><stop stop-color="#756033"/><stop offset=".6" stop-color="#8f612b"/><stop offset="1" stop-color="#b88a37"/></radialGradient>
-            <g id="fallback-flower"><g fill="url(#petal-gold)"><ellipse cy="-28" rx="12" ry="32"/><ellipse cy="-28" rx="12" ry="32" transform="rotate(45)"/><ellipse cy="-28" rx="12" ry="32" transform="rotate(90)"/><ellipse cy="-28" rx="12" ry="32" transform="rotate(135)"/><ellipse cy="-28" rx="12" ry="32" transform="rotate(180)"/><ellipse cy="-28" rx="12" ry="32" transform="rotate(225)"/><ellipse cy="-28" rx="12" ry="32" transform="rotate(270)"/><ellipse cy="-28" rx="12" ry="32" transform="rotate(315)"/></g><circle r="18" fill="url(#center-gold)"/></g>
-          </defs>
-          <g aria-hidden="true">
-            <g class="stems">
-              <path class="stem draw" pathLength="1" d="M300 550Q210 390 157 249"/>
-              <path class="stem draw" pathLength="1" style="--delay:.15s" d="M272 562Q314 350 386 251"/>
-              <path class="stem draw" pathLength="1" style="--delay:.3s" d="M302 565Q275 360 265 155"/>
-              <path class="stem draw" pathLength="1" style="--delay:.2s" d="M287 555Q223 386 217 326"/>
-              <path class="stem draw" pathLength="1" style="--delay:.4s" d="M279 560Q315 369 329 322"/>
-              <path class="stem draw" pathLength="1" style="--delay:.5s" d="M288 560Q202 388 112 355"/>
-              <path class="stem draw" pathLength="1" style="--delay:.65s" d="M298 556Q366 374 437 367"/>
-              <path class="stem draw" pathLength="1" d="M289 518Q145 466 132 300M285 513Q410 466 452 292M277 496Q188 402 181 191M305 476Q371 340 346 179" stroke-width="1.5"/>
-            </g>
-            <g fill="url(#leaf-green)">
-              <path class="leaf" d="M259 448Q184 451 181 380Q243 378 259 448Z"/>
-              <path class="leaf" style="--delay:.7s" d="M303 434Q366 423 372 369Q315 366 303 434Z"/>
-              <path class="leaf" style="--delay:.6s" d="M238 400Q172 398 164 342Q222 345 238 400Z"/>
-              <path class="leaf" style="--delay:.8s" d="M281 350Q230 335 231 276Q279 289 281 350Z"/>
-              <path class="leaf" style="--delay:1s" d="M335 354Q388 351 403 304Q352 299 335 354Z"/>
-              <path class="leaf" style="--delay:.65s" d="M179 406Q124 399 105 364Q159 356 179 406Z"/>
-              <path class="leaf" style="--delay:.9s" d="M378 418Q428 441 455 406Q413 384 378 418Z"/>
-              <path class="leaf" style="--delay:1.1s" d="M185 290Q151 278 151 232Q185 245 185 290Z"/>
-              <path class="leaf" style="--delay:1.15s" d="M348 230Q374 218 374 185Q344 196 348 230Z"/>
-              <path class="leaf" style="--delay:.4s" d="M149 360Q113 338 116 308Q148 322 149 360Z"/>
-              <path class="leaf" style="--delay:.8s" d="M430 351Q459 338 467 310Q432 314 430 351Z"/>
-            </g>
-            <g class="vein"><path class="draw" pathLength="1" d="M257 445 187 386M306 430 367 375M279 346 235 285M337 350 394 310M236 395 170 348"/></g>
-            <g id="flowers"><use href="#fallback-flower" transform="translate(157 249) rotate(-18) scale(.85)"/><use href="#fallback-flower" transform="translate(386 251) rotate(22) scale(.82)"/><use href="#fallback-flower" transform="translate(265 155) scale(1.05)"/><use href="#fallback-flower" transform="translate(217 326) rotate(-12) scale(.9)"/><use href="#fallback-flower" transform="translate(329 322) rotate(14) scale(.95)"/><use href="#fallback-flower" transform="translate(112 355) rotate(-30) scale(.55)"/><use href="#fallback-flower" transform="translate(437 367) rotate(30) scale(.55)"/></g>
-            <g class="ribbon" fill="none" stroke="#b99560" stroke-width="2"><path d="M277 500Q244 480 243 498Q248 521 297 499Q324 475 329 495Q327 517 282 502M283 505Q268 534 257 544M292 505Q316 537 308 556"/><path d="M277 498 299 505M277 503 298 499" stroke-width="4"/></g>
-            <g fill="#b5984f"><path class="spark" d="m113 165 2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><path class="spark" style="--delay:-2s" d="m432 188 2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/><circle class="spark" cx="88" cy="280" r="2"/><circle class="spark" style="--delay:-3s" cx="399" cy="126" r="2"/><circle class="spark" style="--delay:-1s" cx="465" cy="452" r="2"/><circle class="spark" style="--delay:-4s" cx="162" cy="472" r="1.5"/></g>
+    <div class="stage">
+      <svg class="art" id="art" viewBox="0 0 760 650" role="img" aria-labelledby="art-title art-description">
+        <title id="art-title">Un regalo esperando a que lo abras</title>
+        <desc id="art-description">Una caja color rosa empolvado con un lazo de satén. Al abrirla, siete capullos amarillos se elevan y despliegan sus pétalos hasta formar un ramo.</desc>
+        <defs>
+          <radialGradient id="sunlight"><stop stop-color="#ffe8a1" stop-opacity=".65"/><stop offset=".62" stop-color="#efdaae" stop-opacity=".17"/><stop offset="1" stop-color="#efdaae" stop-opacity="0"/></radialGradient>
+          <radialGradient id="floor"><stop stop-color="#7b6550" stop-opacity=".24"/><stop offset="1" stop-color="#7b6550" stop-opacity="0"/></radialGradient>
+          <linearGradient id="box-front" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#f3ded3"/><stop offset=".5" stop-color="#e8c9b9"/><stop offset="1" stop-color="#d4ab99"/></linearGradient>
+          <linearGradient id="box-side" x1="0" x2="1"><stop stop-color="#c39786"/><stop offset="1" stop-color="#b38475"/></linearGradient>
+          <linearGradient id="box-top" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff1e3"/><stop offset=".52" stop-color="#f3d9c7"/><stop offset="1" stop-color="#e1bda9"/></linearGradient>
+          <linearGradient id="inside" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8c6356"/><stop offset="1" stop-color="#493b33"/></linearGradient>
+          <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2=".7"><stop stop-color="#78493d"/><stop offset=".28" stop-color="#a86a52"/><stop offset=".46" stop-color="#d7a787"/><stop offset=".61" stop-color="#af795f"/><stop offset="1" stop-color="#754237"/></linearGradient>
+          <linearGradient id="petal-back" x1="0" y1="1" x2=".65" y2="0"><stop stop-color="#b06a17"/><stop offset=".36" stop-color="#dca023"/><stop offset=".74" stop-color="#f4c845"/><stop offset="1" stop-color="#ffdf7b"/></linearGradient>
+          <linearGradient id="petal-front" x1="0" y1="1" x2=".7" y2="0"><stop stop-color="#b87a16"/><stop offset=".32" stop-color="#e8b230"/><stop offset=".68" stop-color="#f8d35b"/><stop offset="1" stop-color="#fff0ac"/></linearGradient>
+          <linearGradient id="leaf-color"><stop stop-color="#455d38"/><stop offset=".52" stop-color="#6c8450"/><stop offset="1" stop-color="#a3b773"/></linearGradient>
+          <linearGradient id="stem-color"><stop stop-color="#4c6340"/><stop offset=".48" stop-color="#849459"/><stop offset="1" stop-color="#4c6740"/></linearGradient>
+          <radialGradient id="flower-center" cx=".4" cy=".32"><stop stop-color="#c89b42"/><stop offset=".64" stop-color="#9f702d"/><stop offset="1" stop-color="#765027"/></radialGradient>
+          <filter id="head-shadow" x="-35%" y="-35%" width="170%" height="170%"><feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#6d4f25" flood-opacity=".2"/></filter>
+          <filter id="box-shadow" x="-35%" y="-40%" width="175%" height="190%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#68513d" flood-opacity=".16"/></filter>
+          <filter id="soften"><feGaussianBlur stdDeviation="5"/></filter>
+          <clipPath id="above-box"><path d="M40 30H730V470H40Z"/></clipPath>
+        </defs>
+        <ellipse id="ambient" cx="380" cy="290" rx="325" ry="282" fill="url(#sunlight)" opacity=".22"/>
+        <g id="world">
+          <ellipse cx="399" cy="603" rx="246" ry="32" fill="url(#floor)"/>
+          <g id="lid-shadow" opacity="0"><ellipse cx="595" cy="584" rx="115" ry="19" fill="url(#floor)"/></g>
+          <!-- The lid is behind the flowers and box when it comes to rest. -->
+          <g id="lid" filter="url(#box-shadow)">
+            <path d="M229 420 331 365 546 391 445 450Z" fill="url(#box-top)" stroke="#fce8d8" stroke-width="1"/>
+            <path d="M229 420 445 450 445 475 229 445Z" fill="url(#box-front)"/>
+            <path d="M445 450 546 391 546 416 445 475Z" fill="url(#box-side)"/>
+            <path d="M322 433 358 438 460 381 424 376Z" fill="url(#ribbon)"/>
+            <path d="M322 433 358 438 358 462 322 457Z" fill="url(#ribbon)"/>
+            <path d="M445 448 546 390" stroke="#fff2de" stroke-opacity=".75" fill="none"/>
           </g>
-        </svg>
-        <div class="scene-caption">Si fueras una flor, te elegiría a ti.</div>
-        <button class="replay" id="replay" hidden>↻ Volver a florecer</button>
-      </section>
-    </main>
-    <footer class="bottom"><span class="note">No son solo flores. Es una forma de decir: pienso en ti.</span><span class="micro">Hecho con <span class="heart" aria-hidden="true">♡</span><span class="sr-heart">amor</span>, para ti</span></footer>
-  </div>
-  <dialog id="letter" aria-labelledby="letter-title">
-    <button class="close" id="close-letter" aria-label="Cerrar carta">×</button>
-    <div class="letter-top"><span>Para ti, con cariño</span><span aria-hidden="true">01 / 01</span></div>
-    <div class="envelope" id="envelope"><h2 id="letter-title">Hay algo que<br>quiero que sepas.</h2><p>Algunas cosas merecen una pequeña carta.</p><button class="seal" id="unseal" aria-label="Abrir el sello y leer la carta">♡</button><p>Toca el corazón para abrirla</p></div>
-    <article class="letter-body" id="letter-body" hidden tabindex="-1"><h2 id="message-title">Mi lugar bonito.</h2><p>No quería que este día pasara sin regalarte flores amarillas. Aunque estas no tengan perfume, llevan algo que sí es de verdad: mis ganas de hacerte sonreír.</p><p>Me gusta cómo un día cualquiera se vuelve especial cuando apareces tú. Cómo, sin darte cuenta, haces que todo se sienta un poquito más cálido.</p><p>Si estas flores pudieran hablar, te dirían lo mismo que yo: qué bonito coincidir contigo. Y qué ganas de seguir eligiéndote.</p><p class="sign">Hoy, estas flores son para ti. ♡</p><p class="ps">Y mi sonrisa, cada vez que pienso en ti, también.</p></article>
-  </dialog>
+          <!-- Interior and back rim. The closed lid is duplicated above this layer. -->
+          <g id="box-back">
+            <path d="M240 438 333 387 535 410 442 464Z" fill="url(#inside)" stroke="#c39784" stroke-width="3"/>
+            <path d="M249 437 334 395 524 415 441 455Z" fill="#765845"/>
+            <ellipse id="inner-light" cx="389" cy="435" rx="112" ry="22" fill="#ffdda0" opacity="0"/>
+          </g>
+          <g id="garden" clip-path="url(#above-box)">
+            <g id="stems"></g>
+            <g id="leaves"></g>
+            <g id="flowers"></g>
+          </g>
+          <g id="box-front-group" filter="url(#box-shadow)">
+            <path d="M240 438 442 464 442 591 240 559Z" fill="url(#box-front)"/>
+            <path d="M442 464 535 410 535 538 442 591Z" fill="url(#box-side)"/>
+            <path d="M240 438 442 464 535 410" fill="none" stroke="#f9e4d0" stroke-width="2"/>
+            <path d="M324 449 359 453 359 578 324 573Z" fill="url(#ribbon)"/>
+            <path d="M329 451 332 574" stroke="#ebc6a1" stroke-opacity=".4"/>
+            <path d="M443 466V588" fill="none" stroke="#aa7c69" stroke-opacity=".5"/>
+            <path d="M252 550 427 577" stroke="#c8a18b" stroke-opacity=".35"/>
+            <g transform="translate(376 506) rotate(8)">
+              <path d="M-17-19H24V24H-17L-26 2Z" fill="#fbf1df" stroke="#d4b998"/>
+              <circle cx="-17" cy="2" r="2" fill="#ba987a"/>
+              <path d="M-17 2Q-39-8-40-34" fill="none" stroke="#bd9778" stroke-width="1"/>
+              <text x="2" y="1" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="9" fill="#92714d">para</text>
+              <text x="2" y="13" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#92714d">ti</text>
+            </g>
+          </g>
+          <g id="closed-lid"></g>
+          <g id="bow" fill="none" stroke="url(#ribbon)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+            <path id="bow-left" d="M385 404C352 351 299 354 316 382C326 399 360 405 385 404"/>
+            <path id="bow-right" d="M385 404C404 350 465 360 449 383C434 403 407 406 385 404"/>
+            <path id="tail-left" d="M384 407C358 427 338 448 350 471" stroke-width="15"/>
+            <path id="tail-right" d="M391 406C424 416 453 425 464 446" stroke-width="14"/>
+            <path id="knot" d="M379 402Q387 396 395 405L393 414Q385 418 378 410Z" fill="url(#ribbon)" stroke-width="3"/>
+          </g>
+        </g>
+      </svg>
+      <button class="gift-hit" id="open-gift" aria-label="Abrir el regalo de flores amarillas" aria-describedby="hint" disabled></button>
+    </div>
+    <div class="controls">
+      <p class="hint" id="hint">Toca el regalo para abrirlo</p>
+      <div class="actions" id="actions">
+        <button class="quiet" id="pause" hidden>Pausar</button>
+        <button class="quiet" id="still" hidden>Ver sin animación</button>
+        <button class="replay" id="replay" hidden><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 5a5.5 5.5 0 1 1-1 5M3 1v4h4"/></svg>Volver a abrir el regalo</button>
+      </div>
+      <p class="signature" id="signature" hidden>Porque qué bonito es coincidir contigo.</p>
+    </div>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+    <noscript>Estas flores amarillas son para ti. Para ver cómo se abre tu regalo, activa JavaScript en el navegador.</noscript>
+  </main>
   <script>
     'use strict';
-    // Ilustración original en SVG. Sin librerías, imágenes remotas ni rastreadores.
-    const ns='http://www.w3.org/2000/svg';
-    const svgNode=(tag,attrs={})=>{const node=document.createElementNS(ns,tag);for(const [key,value] of Object.entries(attrs))node.setAttribute(key,String(value));return node;};
-    const flowers=document.getElementById('flowers');
-    const flowerPositions=[[157,249,.85,-18,1.05],[386,251,.82,22,1.25],[265,155,1.05,-7,.8],[217,326,.90,-12,1.45],[329,322,.95,14,1.65],[112,355,.55,-30,1.9],[437,367,.55,30,2.1]];
-    const flowerArt=document.createDocumentFragment();
-    flowerPositions.forEach(([x,y,scale,rotation,delay],index)=>{
-      const flower=svgNode('g',{transform:`translate(${x} ${y}) rotate(${rotation}) scale(${scale})`});
-      for(let layer=0;layer<2;layer++){
-        for(let i=0;i<13;i++){
-          const angle=i*360/13+layer*14;
-          const holder=svgNode('g',{transform:`rotate(${angle})`});
-          const petal=svgNode('g',{class:'petal',style:`--delay:${delay+i*.035+layer*.17}s`});
-          const length=64-layer*10+Math.sin(i*3+index)*5;
-          petal.append(svgNode('path',{d:`M0 0 C-13 -15 -18 -${length-14} -3 -${length} C4 -${length+8} 18 -${length-20} 11 -25 Q8 -7 0 0Z`,fill:layer?'url(#petal-light)':'url(#petal-gold)',stroke:'#c49027','stroke-width':'.45'}));
-          petal.append(svgNode('path',{d:`M0 -8Q-3 -28 -1 -${length-7}`,fill:'none',stroke:'#fff0ab','stroke-width':'.8',opacity:'.5'}));
-          holder.append(petal);flower.append(holder);
+    (() => {
+      // Original vector art; no downloaded assets, dependencies or network requests.
+      // One deterministic timeline drives the ribbon, lid, curved paths and petal morphs.
+      const $ = id => document.getElementById(id);
+      const NS = 'http://www.w3.org/2000/svg';
+      const el = (name, attrs = {}) => {
+        const node = document.createElementNS(NS, name);
+        for (const [key,value] of Object.entries(attrs)) node.setAttribute(key, String(value));
+        return node;
+      };
+      const clamp = value => Math.max(0, Math.min(1, value));
+      const mix = (a,b,t) => a+(b-a)*t;
+      const smooth = value => { const t=clamp(value); return t*t*(3-2*t); };
+      const easeOut = value => 1-Math.pow(1-clamp(value),3);
+      const round = value => Math.round(value*100)/100;
+      const point = (a,b,t) => [mix(a[0],b[0],t),mix(a[1],b[1],t)];
+      const bezier = (points,t) => {
+        const a=point(points[0],points[1],t), b=point(points[1],points[2],t), c=point(points[2],points[3],t);
+        return point(point(a,b,t),point(b,c,t),t);
+      };
+      const path = points => 'M'+points[0].map(round).join(' ')+points.slice(1).map((p,i)=>(i%3===0?'C':' ')+p.map(round).join(' ')).join('');
+      const morph = (from,to,t) => path(from.map((p,i)=>point(p,to[i],t)));
+      const turn = (p,angle) => [p[0]*Math.cos(angle)-p[1]*Math.sin(angle),p[0]*Math.sin(angle)+p[1]*Math.cos(angle)];
+      const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+      const duration=10200;
+      const art=$('art'), world=$('world'), flowers=$('flowers'), stems=$('stems'), leaves=$('leaves');
+      const hit=$('open-gift'), replay=$('replay'), pause=$('pause'), still=$('still');
+      const lid=$('lid'), frontLid=$('closed-lid');
+      // Keep the shut lid in front of the box until it has lifted clear of the rim.
+      for(const child of [...lid.children]) frontLid.append(child.cloneNode(true));
+      frontLid.setAttribute('filter','url(#box-shadow)');
+      const ribbon={
+        left:[[385,404],[352,351],[299,354],[316,382],[326,399],[360,405],[385,404]],
+        looseLeft:[[385,404],[359,414],[294,388],[277,431],[263,466],[246,512],[235,529]],
+        right:[[385,404],[404,350],[465,360],[449,383],[434,403],[407,406],[385,404]],
+        looseRight:[[385,404],[421,388],[476,370],[523,402],[561,429],[570,468],[563,492]],
+        tailLeft:[[384,407],[358,427],[338,448],[350,471]],
+        longLeft:[[363,417],[324,463],[290,531],[247,568]],
+        tailRight:[[391,406],[424,416],[453,425],[464,446]],
+        longRight:[[423,411],[488,421],[536,509],[544,563]]
+      };
+      // Back to front: each flower has its own arrival, scale, tilt and trajectory.
+      const settings=[
+        {x:331,y:159,s:1.06,r:-13,delay:1800,travel:4400,bloom:3300,side:-1},
+        {x:228,y:232,s:.88,r:-24,delay:2420,travel:4040,bloom:3000,side:-1},
+        {x:433,y:215,s:.96,r:18,delay:2900,travel:4200,bloom:3100,side:1},
+        {x:159,y:308,s:.65,r:-30,delay:3470,travel:3500,bloom:2760,side:-1},
+        {x:303,y:297,s:.98,r:-5,delay:3970,travel:4040,bloom:3080,side:-1},
+        {x:493,y:309,s:.74,r:29,delay:4500,travel:3650,bloom:2800,side:1},
+        {x:402,y:333,s:.87,r:13,delay:4950,travel:3830,bloom:2900,side:1}
+      ];
+      const plants=settings.map((config,index)=>{
+        const stem=el('path',{class:'stem'}), light=el('path',{class:'stem-light'});
+        stems.append(stem,light);
+        const leafNodes=[];
+        for(let j=0;j<2;j++){
+          const g=el('g');
+          g.append(el('path',{d:'M0 0C-7-32-44-44-59-40C-45-5-19 7 0 0Z',fill:'url(#leaf-color)'}));
+          g.append(el('path',{d:'M-3-2Q-30-23-52-36',stroke:'#ced598','stroke-width':'.8',fill:'none',opacity:'.6'}));
+          leaves.append(g);leafNodes.push(g);
+        }
+        const root=el('g',{'data-flower':index});
+        const head=el('g',{filter:'url(#head-shadow)'});
+        const petals=[];
+        // Closed shapes form overlapping, upright bud shells. They morph into
+        // individually rotated Bézier petals, rather than scaling a flower image.
+        for(let layer=0;layer<2;layer++){
+          for(let i=0;i<13;i++){
+            const angle=(i*360/13+layer*13+index*3)*Math.PI/180;
+            const length=62-layer*9+Math.sin(i*2.8+index)*4;
+            const width=17-layer*2;
+            const open=[[0,3],[-width*.6,-length*.2],[-width,-length*.69],[-width*.2,-length*.97],[0,-length*1.1],[width,-length*.83],[width*.72,-length*.48],[width*.5,-length*.18],[width*.12,0],[0,3]].map(p=>turn(p,angle));
+            const lean=Math.sin(angle)*6, height=41+Math.cos(angle)*5-layer*3;
+            const closed=[[0,3],[-6+lean,-9],[-9+lean,-height*.65],[lean-1,-height],[lean+3,-height-4],[lean+10,-height*.7],[lean+7,-height*.4],[lean+5,-8],[1,1],[0,3]];
+            const petal=el('path',{class:'petal',fill:layer?'url(#petal-front)':'url(#petal-back)',d:path(closed)+'Z'});
+            const vein=el('path',{class:'petal-vein'});
+            head.append(petal,vein);
+            petals.push({petal,vein,closed,open,angle,length,offset:layer*270+i*27+Math.sin(i+index)*60});
+          }
+        }
+        const center=el('g');
+        center.append(el('circle',{r:16.5,fill:'url(#flower-center)',stroke:'#d3a345','stroke-width':'1'}));
+        for(let n=0;n<72;n++){
+          const r=1.7*Math.sqrt(n),a=n*2.399963;
+          center.append(el('circle',{cx:round(Math.cos(a)*r),cy:round(Math.sin(a)*r),r:n%3===0?.95:.65,fill:n%3===0?'#efd080':'#704c27',opacity:'.8'}));
+        }
+        head.append(center);
+        const sepals=el('g',{fill:'url(#leaf-color)'});
+        const sepalLeft=el('path'),sepalRight=el('path');
+        sepals.append(sepalLeft,sepalRight);head.append(sepals);
+        root.append(head);flowers.append(root);
+        const origin=[366+(index%3)*13,472];
+        const route=[origin,[origin[0]+config.side*(82+index*3),398-index*4],[config.x-config.side*52,config.y-22],[config.x,config.y]];
+        return {...config,root,head,petals,center,stem,light,leafNodes,origin,route,sepalLeft,sepalRight,lastBloom:-1};
+      });
+      let phase='closed', elapsed=0, raf=0, previousTime=null, paused=false, resumeOnVisible=false;
+      const setPhase=value=>{phase=value;$('experience').dataset.state=value;};
+      function render(time){
+        const shift=smooth(time/1900);
+        world.setAttribute('transform','translate(0 '+round(-88*(1-shift))+') translate(388 470) scale('+round(mix(1.17,1,shift))+') translate(-388 -470)');
+        const untie=smooth((time-120)/1120);
+        $('bow-left').setAttribute('d',morph(ribbon.left,ribbon.looseLeft,untie));
+        $('bow-right').setAttribute('d',morph(ribbon.right,ribbon.looseRight,untie));
+        $('tail-left').setAttribute('d',morph(ribbon.tailLeft,ribbon.longLeft,untie));
+        $('tail-right').setAttribute('d',morph(ribbon.tailRight,ribbon.longRight,untie));
+        $('knot').setAttribute('opacity',String(1-smooth((time-400)/440)));
+        $('bow').setAttribute('opacity',String(1-smooth((time-1180)/650)));
+        const lift=smooth((time-1020)/1950);
+        const lidPosition=bezier([[0,0],[0,-192],[177,-139],[135,112]],lift);
+        const lidTransform='translate('+lidPosition.map(round).join(' ')+') rotate('+round(19*lift)+' 388 425)';
+        lid.setAttribute('transform',lidTransform);frontLid.setAttribute('transform',lidTransform);
+        frontLid.setAttribute('opacity',time<1500?'1':'0');
+        lid.setAttribute('opacity',time<1500?'0':'1');
+        $('lid-shadow').setAttribute('opacity',String(smooth((time-2050)/900)));
+        $('inner-light').setAttribute('opacity',String(.6*smooth((time-1300)/1000)));
+        $('ambient').setAttribute('opacity',String(.22+.7*smooth((time-1900)/4900)));
+        for(const plant of plants){
+          const age=time-plant.delay, travel=smooth(age/plant.travel), visible=age>0;
+          plant.root.setAttribute('visibility',visible?'visible':'hidden');
+          plant.stem.setAttribute('visibility',visible?'visible':'hidden');
+          plant.light.setAttribute('visibility',visible?'visible':'hidden');
+          const [x,y]=bezier(plant.route,travel);
+          const spin=mix(plant.r+plant.side*38,plant.r,travel)+Math.sin(travel*Math.PI)*plant.side*9;
+          plant.root.setAttribute('transform','translate('+round(x)+' '+round(y)+') rotate('+round(spin)+') scale('+round(plant.s*mix(.64,1,easeOut(travel)))+' '+round(plant.s*mix(.74,.94,travel))+')');
+          const stemPoints=[plant.origin,[plant.origin[0]+plant.side*13,plant.origin[1]-42],[x+plant.side*22,y+82],[x,y+3]];
+          const stemPath=path(stemPoints);
+          plant.stem.setAttribute('d',stemPath);plant.light.setAttribute('d',stemPath);
+          const bloom=smooth((age-500)/plant.bloom);
+          plant.leafNodes.forEach((leaf,j)=>{
+            const pos=bezier(stemPoints,.36+j*.24);
+            const growth=smooth((age-1100-j*240)/2200);
+            leaf.setAttribute('visibility',visible?'visible':'hidden');
+            leaf.setAttribute('transform','translate('+pos.map(round).join(' ')+') rotate('+(j===0?-12:135)+') scale('+round(growth*plant.s*(j===0?.95:.75))+')');
+          });
+          // Petal morphs are updated only while they are changing.
+          const morphProgress=clamp(age/(plant.bloom+1200));
+          if(morphProgress!==plant.lastBloom){
+            for(const petal of plant.petals){
+              const opened=smooth((age-550-petal.offset)/(plant.bloom-450));
+              petal.petal.setAttribute('d',morph(petal.closed,petal.open,opened)+'Z');
+              const v1=point([1,-6],turn([0,-10],petal.angle),opened);
+              const v2=point([2,-22],turn([-2,-petal.length*.52],petal.angle),opened);
+              const v3=point([0,-35],turn([0,-petal.length*.87],petal.angle),opened);
+              petal.vein.setAttribute('d','M'+v1.map(round).join(' ')+'Q'+v2.map(round).join(' ')+' '+v3.map(round).join(' '));
+            }
+            const centerOpen=smooth((bloom-.26)/.65);
+            plant.center.setAttribute('transform','scale('+round(.05+.95*centerOpen)+')');
+            plant.center.setAttribute('opacity',String(centerOpen));
+            plant.sepalLeft.setAttribute('d',morph([[0,5],[-19,-3],[-17,-27],[-6,-33]],[[0,5],[-15,13],[-30,0],[-29,-7]],bloom)+'Q-8 2 0 5Z');
+            plant.sepalRight.setAttribute('d',morph([[0,5],[20,-2],[18,-28],[7,-34]],[[0,5],[16,13],[29,0],[30,-6]],bloom)+'Q8 2 0 5Z');
+            plant.lastBloom=morphProgress;
+          }
         }
       }
-      const center=svgNode('g',{class:'heart-of-flower',style:`--delay:${delay+.45}s`});
-      center.append(svgNode('circle',{r:18,fill:'url(#center-gold)'}));
-      for(let seed=0;seed<90;seed++){
-        const radius=1.62*Math.sqrt(seed),angle=seed*2.399963;
-        center.append(svgNode('circle',{cx:Math.cos(angle)*radius,cy:Math.sin(angle)*radius,r:seed%4===0?1.05:.7,fill:seed%3===0?'#e5bb58':'#473f24',opacity:.72}));
+      function announce(message){$('announcement').textContent=message;}
+      function finish(){
+        cancelAnimationFrame(raf);raf=0;previousTime=null;elapsed=duration;render(duration);setPhase('open');paused=false;
+        $('heading').innerHTML='Estas flores amarillas<br><em>son para ti</em>';
+        $('subtitle').textContent='Ojalá te hagan sonreír tanto como tú a mí.';
+        $('hint').hidden=true;pause.hidden=true;still.hidden=true;replay.hidden=false;$('signature').hidden=false;
+        art.setAttribute('aria-label','Regalo abierto con un ramo de siete flores amarillas completamente florecidas');
+        $('art-title').textContent='Un ramo de flores amarillas, solo para ti';
+        announce('Estas flores amarillas son para ti. El regalo está abierto.');
       }
-      flower.append(center);flowerArt.append(flower);
-    });
-    flowers.replaceChildren(flowerArt);
-    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
-    const motion=document.getElementById('motion');
-    let paused=false;
-    const updateMotion=()=>{document.body.dataset.paused=String(paused);motion.setAttribute('aria-pressed',String(paused));const label=paused?'Reanudar animaciones':'Pausar animaciones';motion.setAttribute('aria-label',label);motion.title=label;};
-    motion.addEventListener('click',()=>{paused=!paused;updateMotion();});
-    const applyPreference=()=>{document.body.classList.toggle('reduced',reduce.matches);motion.hidden=reduce.matches;};
-    reduce.addEventListener('change',applyPreference);applyPreference();
-    const scene=document.getElementById('scene');
-    scene.addEventListener('pointermove',event=>{if(reduce.matches||paused||event.pointerType!=='mouse')return;const rect=scene.getBoundingClientRect();scene.style.setProperty('--rx',`${(event.clientX-rect.left-rect.width/2)/rect.width*7}deg`);scene.style.setProperty('--ry',`${-(event.clientY-rect.top-rect.height/2)/rect.height*5}deg`);});
-    scene.addEventListener('pointerleave',()=>{scene.style.setProperty('--rx','0deg');scene.style.setProperty('--ry','0deg');});
-    const replay=document.getElementById('replay');replay.hidden=false;
-    replay.addEventListener('click',()=>{paused=false;updateMotion();document.querySelectorAll('#bouquet .draw,#bouquet .leaf,#bouquet .petal,#bouquet .heart-of-flower,#bouquet .ribbon').forEach(element=>{element.getAnimations().forEach(animation=>{animation.currentTime=0;animation.play();});});});
-    const letter=document.getElementById('letter'),openButton=document.getElementById('open-letter');
-    openButton.addEventListener('click',()=>{letter.showModal();document.body.style.overflow='hidden';});
-    document.getElementById('close-letter').addEventListener('click',()=>letter.close());
-    letter.addEventListener('close',()=>{document.body.style.overflow='';openButton.focus();});
-    letter.addEventListener('click',event=>{if(event.target!==letter)return;const rect=letter.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)letter.close();});
-    document.getElementById('unseal').addEventListener('click',()=>{document.getElementById('envelope').hidden=true;const message=document.getElementById('letter-body');message.hidden=false;letter.setAttribute('aria-labelledby','message-title');message.focus();});
+      function tick(now){
+        if(phase!=='opening'||paused||document.hidden){previousTime=null;raf=0;return;}
+        if(previousTime!==null)elapsed+=Math.min(now-previousTime,100);
+        previousTime=now;render(elapsed);
+        if(elapsed>=duration){finish();return;}
+        raf=requestAnimationFrame(tick);
+      }
+      function reset(){
+        cancelAnimationFrame(raf);raf=0;previousTime=null;elapsed=0;paused=false;resumeOnVisible=false;setPhase('closed');
+        plants.forEach(p=>p.lastBloom=-1);render(0);
+        $('heading').innerHTML='Tengo algo <em>para ti</em>';
+        $('subtitle').textContent='Hay cosas que no caben en palabras.';
+        $('hint').hidden=false;$('hint').textContent='Toca el regalo para abrirlo';
+        $('signature').hidden=true;replay.hidden=true;pause.hidden=true;pause.textContent='Pausar';
+        pause.setAttribute('aria-pressed','false');still.hidden=motionPreference.matches;hit.disabled=false;hit.hidden=false;
+        art.removeAttribute('aria-label');$('art-title').textContent='Un regalo esperando a que lo abras';
+        $('announcement').textContent='';
+      }
+      function openGift(withoutMotion=false,repeating=false){
+        if(phase!=='closed')return;
+        hit.disabled=true;hit.hidden=true;
+        if(withoutMotion||motionPreference.matches){finish();return;}
+        setPhase('opening');elapsed=repeating?-700:0;previousTime=null;
+        $('hint').textContent='Un momento… lo bonito está floreciendo.';
+        pause.hidden=false;still.hidden=false;announce('Se desata el lazo. Tu regalo está floreciendo.');
+        raf=requestAnimationFrame(tick);
+      }
+      hit.addEventListener('click',()=>openGift());
+      replay.addEventListener('click',()=>{reset();openGift(false,true);});
+      still.addEventListener('click',()=>{if(phase==='closed')openGift(true);else finish();});
+      pause.addEventListener('click',()=>{
+        paused=!paused;pause.textContent=paused?'Continuar':'Pausar';pause.setAttribute('aria-pressed',String(paused));
+        if(paused){cancelAnimationFrame(raf);raf=0;previousTime=null;}
+        else{previousTime=null;raf=requestAnimationFrame(tick);}
+      });
+      // Never spend battery animating a hidden page; continue from the same frame.
+      document.addEventListener('visibilitychange',()=>{
+        if(document.hidden){resumeOnVisible=phase==='opening'&&!paused;cancelAnimationFrame(raf);raf=0;previousTime=null;}
+        else if(resumeOnVisible&&phase==='opening'&&!paused){resumeOnVisible=false;raf=requestAnimationFrame(tick);}
+      });
+      motionPreference.addEventListener('change',()=>{
+        if(motionPreference.matches&&phase==='opening')finish();
+        if(phase==='closed')still.hidden=motionPreference.matches;
+      });
+      reset();
+    })();
   </script>
 </body>
 </html>
