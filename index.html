@@ -23,9 +23,9 @@
     h1 { font:400 clamp(34px,4.4vw,53px)/1.13 Georgia,"Times New Roman",serif; letter-spacing:-.035em; margin:0; min-height:1.15em; }
     h1 em { font-weight:400; color:#99703c; }
     .subtitle { margin:13px 0 0; color:var(--muted); font:italic 16px/1.6 Georgia,serif; min-height:26px; }
-    .stage { position:relative; flex:none; width:min(850px,calc((100svh - 250px) * 1.16923),100%); min-width:260px; }
+    .stage { overflow:hidden; position:relative; flex:none; width:min(850px,calc((100svh - 250px) * 1.16923),100%); min-width:260px; }
     .art { display:block; width:100%; height:auto; aspect-ratio:760/650; overflow:visible; }
-    .gift-hit { position:absolute; left:24%; top:32%; width:53%; height:46%; border:0; border-radius:36%; cursor:pointer; background:transparent; }
+    .gift-hit { position:absolute; left:24%; top:47%; width:53%; height:42%; border:0; border-radius:36%; cursor:pointer; background:transparent; }
     .gift-hit:focus-visible { outline:1px dashed #ad835b; outline-offset:5px; }
     .gift-hit:not(:disabled):hover { background:radial-gradient(ellipse,#ffffff13,transparent 65%); }
     .controls { text-align:center; min-height:75px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:8px; position:relative; z-index:2; }
@@ -73,7 +73,7 @@
     <div class="stage">
       <svg class="art" id="art" viewBox="0 0 760 650" role="img" aria-labelledby="art-title art-description">
         <title id="art-title">Un regalo esperando a que lo abras</title>
-        <desc id="art-description">Una caja color rosa empolvado con un lazo de satén. Al abrirla, doce flores de distintas variedades se elevan y despliegan sus pétalos hasta formar un ramo.</desc>
+        <desc id="art-description">Snoopy se acerca, levanta y sostiene una caja color rosa empolvado con un lazo de satén. Al abrirla, doce flores de distintas variedades se elevan y despliegan sus pétalos hasta formar un ramo.</desc>
         <defs>
           <radialGradient id="sunlight"><stop stop-color="#ffe8a1" stop-opacity=".65"/><stop offset=".62" stop-color="#efdaae" stop-opacity=".17"/><stop offset="1" stop-color="#efdaae" stop-opacity="0"/></radialGradient>
           <radialGradient id="floor"><stop stop-color="#7b6550" stop-opacity=".24"/><stop offset="1" stop-color="#7b6550" stop-opacity="0"/></radialGradient>
@@ -93,7 +93,7 @@
           <clipPath id="above-box"><path d="M40 30H730V470H40Z"/></clipPath>
         </defs>
         <ellipse id="ambient" cx="380" cy="290" rx="325" ry="282" fill="url(#sunlight)" opacity=".22"/>
-        <g id="world">
+        <g id="gift-carried"><g id="world">
           <ellipse cx="399" cy="603" rx="246" ry="32" fill="url(#floor)"/>
           <g id="lid-shadow" opacity="0"><ellipse cx="595" cy="584" rx="115" ry="19" fill="url(#floor)"/></g>
           <!-- The lid is behind the flowers and box when it comes to rest. -->
@@ -141,6 +141,29 @@
             <path id="knot" d="M379 402Q387 396 395 405L393 414Q385 418 378 410Z" fill="url(#ribbon)" stroke-width="3"/>
           </g>
         </g>
+        </g>
+        <g id="snoopy" transform="translate(850 487)" aria-hidden="true" stroke="#201e1b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="5" cy="117" rx="67" ry="10" fill="#6e6045" opacity=".13" stroke="none"/>
+          <g id="snoopy-tail"><path d="M34 61Q66 74 79 62Q65 58 43 46" fill="#fffdfa"/></g>
+          <g id="snoopy-leg-back"><path d="M22 63L29 99Q63 99 66 110Q63 119 11 116L8 72" fill="#fffdfa"/><path d="M44 108L40 115" fill="none"/></g>
+          <g id="snoopy-leg-front"><path d="M-16 62L-21 96Q-55 95-62 110Q-64 121-7 117Q7 115 5 103L8 66" fill="#fffdfa"/><path d="M-44 108L-48 116M-28 109L-32 118" fill="none"/></g>
+          <path d="M-20-48C-23-10-44 12-38 48C-33 78 10 88 35 68C55 48 35 11 28-45Z" fill="#fffdfa"/>
+          <path d="M31 12Q48 34 37 60Q18 57 22 32Z" fill="#201e1b" stroke="none"/>
+          <g id="snoopy-arm-back"><path d="M-20-23Q-59-9-101-39" fill="none" stroke="#201e1b" stroke-width="22"/><path d="M-20-23Q-59-9-101-39" fill="none" stroke="#fffdfa" stroke-width="14"/><ellipse cx="-104" cy="-40" rx="12" ry="13" fill="#fffdfa"/></g>
+          <g id="snoopy-head">
+            <path d="M-15-57C-27-65-34-72-48-75C-105-73-126-98-121-131C-118-163-91-178-52-175C-26-175-21-181-4-190C32-211 74-190 85-151C100-110 93-76 70-61C46-48 25-49 12-40Z" fill="#fffdfa"/>
+            <path d="M68-145C44-125 37-90 44-68C53-44 82-57 89-87C96-112 84-139 79-148C72-154 70-150 68-145Z" fill="#201e1b"/>
+            <path d="M67-139Q47-103 49-78" fill="none" stroke="#fffdfa" stroke-width="3"/>
+            <ellipse cx="-105" cy="-126" rx="14" ry="10" fill="#201e1b" stroke="none"/>
+            <ellipse cx="-50" cy="-145" rx="4" ry="8" fill="#201e1b" stroke="none"/>
+            <path d="M-24-167Q-18-174-12-165M-96-104Q-65-75-28-101" fill="none" stroke-width="3"/>
+            <path d="M-32-107Q-24-108-24-99" fill="none" stroke-width="2.5"/>
+            <path d="M-6-190Q-17-199-24-191" fill="none" stroke-width="3"/>
+          </g>
+          <path d="M-23-48L28-39" fill="none" stroke="#aa534f" stroke-width="9"/>
+          <g id="snoopy-arm-front"><path d="M10-25Q-21-11-69-30" fill="none" stroke="#201e1b" stroke-width="25"/><path d="M10-25Q-21-11-69-30" fill="none" stroke="#fffdfa" stroke-width="17"/>
+          <path d="M-69-39C-83-57-94-49-89-37C-110-43-113-28-96-25C-111-15-100-5-88-16C-87 0-72-4-74-19L-64-22Z" fill="#fffdfa" stroke-width="3.5"/></g>
+        </g>
         <g id="celebration" pointer-events="none" aria-hidden="true"></g>
       </svg>
       <button class="gift-hit" id="open-gift" aria-label="Abrir el regalo de flores amarillas" aria-describedby="hint" disabled></button>
@@ -148,6 +171,7 @@
     <div class="controls">
       <p class="hint" id="hint">Toca el regalo para abrirlo</p>
       <div class="actions" id="actions">
+        <button class="quiet" id="skip-intro">Saltar entrada</button>
         <button class="quiet" id="pause" hidden>Pausar</button>
         <button class="quiet" id="still" hidden>Ver sin animación</button>
         <button class="replay" id="replay" hidden><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 5a5.5 5.5 0 1 1-1 5M3 1v4h4"/></svg>Volver a abrir el regalo</button>
@@ -339,13 +363,14 @@
           node.setAttribute('opacity',age>0&&age<1?Math.sin(Math.PI*t)*.9:0);
         });
       }
+      let introductionDone=false, introFrame=0;
       let phase='closed', elapsed=0, raf=0, previousTime=null, paused=false, resumeOnVisible=false;
       const setPhase=value=>{phase=value;$('experience').dataset.state=value;};
       function render(time){
         const shift=smooth(time/1900);
         sprigs.forEach((g,i)=>{const growth=smooth((time-2900-i*35)/3900);g.setAttribute('transform','translate(370 470) scale('+growth+') translate(-370 -470)');g.setAttribute('opacity',growth);});
         renderCelebration(time);
-        world.setAttribute('transform','translate(0 '+round(-88*(1-shift))+') translate(388 470) scale('+round(mix(1.17,1,shift))+') translate(-388 -470)');
+        world.setAttribute('transform','translate(0 0)');
         const untie=smooth((time-120)/1120);
         $('bow-left').setAttribute('d',morph(ribbon.left,ribbon.looseLeft,untie));
         $('bow-right').setAttribute('d',morph(ribbon.right,ribbon.looseRight,untie));
@@ -407,7 +432,7 @@
         $('heading').innerHTML='Estas flores amarillas<br><em>son para ti</em>';
         $('subtitle').textContent='Ojalá te hagan sonreír tanto como tú a mí.';
         $('hint').hidden=true;pause.hidden=true;still.hidden=true;replay.hidden=false;$('signature').hidden=false;
-        art.setAttribute('aria-label','Regalo abierto con un ramo de girasol, rosas amarillas y rosadas, claveles y follaje');
+        art.setAttribute('aria-label','Snoopy sostiene el regalo abierto con un ramo de girasol, rosas amarillas y rosadas, claveles y follaje');
         $('art-title').textContent='Un ramo de flores amarillas, solo para ti';
         announce('Estas flores amarillas son para ti. El regalo está abierto.');
       }
@@ -425,12 +450,12 @@
         $('subtitle').textContent='Hay cosas que no caben en palabras.';
         $('hint').hidden=false;$('hint').textContent='Toca el regalo para abrirlo';
         $('signature').hidden=true;replay.hidden=true;pause.hidden=true;pause.textContent='Pausar';
-        pause.setAttribute('aria-pressed','false');still.hidden=motionPreference.matches;hit.disabled=false;hit.hidden=false;
+        pause.setAttribute('aria-pressed','false');still.hidden=motionPreference.matches||!introductionDone;hit.disabled=!introductionDone;hit.hidden=false;
         art.removeAttribute('aria-label');$('art-title').textContent='Un regalo esperando a que lo abras';
         $('announcement').textContent='';
       }
       function openGift(withoutMotion=false,repeating=false){
-        if(phase!=='closed')return;
+        if(phase!=='closed'||!introductionDone)return;
         hit.disabled=true;hit.hidden=true;
         if(withoutMotion||motionPreference.matches){finish();return;}
         setPhase('opening');elapsed=repeating?-700:0;previousTime=null;
@@ -455,7 +480,39 @@
         if(motionPreference.matches&&phase==='opening')finish();
         if(phase==='closed')still.hidden=motionPreference.matches;
       });
+      function poseSnoopy(time){
+        const walk=smooth(time/2450), reach=smooth((time-2450)/750), lift=smooth((time-3200)/850);
+        const walking=time<2450, stride=walking?Math.sin(time/125)*15*(1-smooth((time-2000)/450)):0;
+        $('snoopy').setAttribute('transform','translate('+round(600+270*(1-walk))+' '+round(461+(walking?Math.abs(Math.sin(time/125))*3:0))+') scale(1.2)');
+        $('snoopy-leg-front').setAttribute('transform','rotate('+stride+' -9 67)');
+        $('snoopy-leg-back').setAttribute('transform','rotate('+(-stride)+' 20 67)');
+        $('snoopy-arm-front').setAttribute('transform','rotate('+round(mix(-62,0,reach)+lift*12)+' 10 -25)');
+        $('snoopy-arm-back').setAttribute('transform','rotate('+round(mix(-55,0,reach)+lift*12)+' -20 -23)');
+        $('snoopy-head').setAttribute('transform','rotate('+round(Math.sin(reach*Math.PI)*7-lift*3)+' 0 -57)');
+        $('gift-carried').setAttribute('transform','translate(0 '+round(-45*lift)+')');
+      }
+      function finishIntroduction(){
+        cancelAnimationFrame(introFrame);introductionDone=true;poseSnoopy(4050);
+        $('skip-intro').hidden=true;hit.disabled=false;still.hidden=motionPreference.matches;
+        $('hint').textContent='Snoopy tiene algo para ti. Toca el regalo.';
+        announce('Snoopy sostiene tu regalo. Tócalo para abrirlo.');
+      }
+      $('skip-intro').addEventListener('click',finishIntroduction);
+      motionPreference.addEventListener('change',()=>{if(motionPreference.matches&&!introductionDone)finishIntroduction();});
       reset();
+      if(motionPreference.matches)finishIntroduction();
+      else{
+        $('hint').textContent='Mira quién viene con una sorpresa…';
+        let introElapsed=0,lastIntro=null;
+        function introduction(now){
+          if(introductionDone)return;
+          if(lastIntro!==null)introElapsed+=Math.min(now-lastIntro,60);
+          lastIntro=now;poseSnoopy(introElapsed);
+          if(introElapsed>=4050)finishIntroduction();
+          else introFrame=requestAnimationFrame(introduction);
+        }
+        introFrame=requestAnimationFrame(introduction);
+      }
     })();
   </script>
 </body>
