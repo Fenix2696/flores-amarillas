@@ -94,6 +94,7 @@
         </defs>
         <ellipse id="ambient" cx="380" cy="290" rx="325" ry="282" fill="url(#sunlight)" opacity=".22"/>
         <ellipse id="gift-floor-shadow" cx="399" cy="603" rx="210" ry="27" fill="url(#floor)"/>
+        <g id="snoopy-behind-gift" aria-hidden="true" stroke="#201e1b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">          <g id="snoopy-arm-back"><path d="M-20-23Q-59-9-101-39" fill="none" stroke="#201e1b" stroke-width="22"/><path d="M-20-23Q-59-9-101-39" fill="none" stroke="#fffdfa" stroke-width="14"/><ellipse cx="-104" cy="-40" rx="12" ry="13" fill="#fffdfa"/></g></g>
         <g id="gift-carried"><g id="world">
           
           <g id="lid-shadow" opacity="0"><ellipse cx="595" cy="584" rx="115" ry="19" fill="url(#floor)"/></g>
@@ -150,7 +151,7 @@
           <g id="snoopy-leg-front"><path d="M-16 62L-21 96Q-55 95-62 110Q-64 121-7 117Q7 115 5 103L8 66" fill="#fffdfa"/><path d="M-44 108L-48 116M-28 109L-32 118" fill="none"/></g>
           <path d="M-20-48C-23-10-44 12-38 48C-33 78 10 88 35 68C55 48 35 11 28-45Z" fill="#fffdfa"/>
           <path d="M31 12Q48 34 37 60Q18 57 22 32Z" fill="#201e1b" stroke="none"/>
-          <g id="snoopy-arm-back"><path d="M-20-23Q-59-9-101-39" fill="none" stroke="#201e1b" stroke-width="22"/><path d="M-20-23Q-59-9-101-39" fill="none" stroke="#fffdfa" stroke-width="14"/><ellipse cx="-104" cy="-40" rx="12" ry="13" fill="#fffdfa"/></g>
+
           <g id="snoopy-head">
             <path d="M-18-49C-19-66-40-68-59-78C-101-82-129-103-132-137C-137-177-108-201-67-203C-42-204-29-198-5-211C29-240 69-218 80-181C88-159 100-146 100-115C99-84 81-64 50-63C26-62 13-52 10-39Z" fill="#fffdfa"/>
             <path d="M77-156C53-142 37-110 39-83C40-53 70-51 86-77C104-108 91-143 85-155C83-163 78-164 77-156Z" fill="#201e1b"/>
@@ -487,6 +488,7 @@
         const walk=smooth(time/2450), reach=smooth((time-2450)/750), lift=smooth((time-3200)/850);
         const walking=time<2450, stride=walking?Math.sin(time/125)*15*(1-smooth((time-2000)/450)):0;
         $('snoopy').setAttribute('transform','translate('+round(600+270*(1-walk))+' '+round(461+(walking?Math.abs(Math.sin(time/125))*3:0))+') scale(1.2)');
+        $('snoopy-behind-gift').setAttribute('transform',$('snoopy').getAttribute('transform'));
         $('snoopy-leg-front').setAttribute('transform','rotate('+stride+' -9 67)');
         $('snoopy-leg-back').setAttribute('transform','rotate('+(-stride)+' 20 67)');
         $('snoopy-arm-front').setAttribute('transform','rotate('+round(mix(-62,-40,reach)+lift*40)+' 10 -25)');
