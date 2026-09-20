@@ -112,7 +112,7 @@
             <ellipse id="inner-light" cx="389" cy="435" rx="112" ry="22" fill="#ffdda0" opacity="0"/>
           </g>
           <g id="garden" clip-path="url(#above-box)">
-            <g id="stems"></g><g id="foliage"></g>
+            <g id="bouquet-backing"></g><g id="stems"></g><g id="foliage"></g>
             <g id="leaves"></g>
             <g id="flowers"></g>
           </g>
@@ -216,6 +216,22 @@
         {x:337,y:408,s:.92,r:8,type:'rose',pink:true,delay:4900,travel:3700,bloom:2900,side:-1}
       ];
       const foliage=$('foliage'), sprigs=[];
+      // A layered bed of leaves fills the interior without extending above the flowers.
+      const backing=$('bouquet-backing');
+      [
+        [259,231,-48,1.05],[318,219,-19,1],[392,221,25,1.04],[465,249,49,1],
+        [218,288,-62,1.12],[280,281,-29,1.13],[426,282,35,1.14],[492,296,62,1.08],
+        [209,339,-71,1],[263,343,-49,1.15],[312,338,-17,1.15],[398,342,22,1.17],
+        [462,344,49,1.13],[505,362,71,.95],
+        [247,402,-66,1],[296,402,-40,1.07],[357,391,2,1.1],[423,408,43,1.05],
+        [474,414,68,.95],[304,448,-63,.85],[369,441,7,.88],[423,449,61,.85]
+      ].forEach(([x,y,angle,scale],i)=>{
+        const group=el('g');
+        const leaf=el('g',{transform:'translate('+x+' '+y+') rotate('+angle+') scale('+scale+')'});
+        leaf.append(el('path',{d:'M0 29C-26 11-29-20 0-43C25-21 28 9 0 29Z',fill:i%3===0?'#526f46':i%3===1?'#698553':'#7b925d',stroke:'#49633e','stroke-width':.6}));
+        leaf.append(el('path',{d:'M0 27Q-3-7 0-37M-1 10L-17-4M-1-3L15-17M-1-13L-13-24',fill:'none',stroke:'#bbca8f','stroke-width':.8,opacity:.48}));
+        group.append(leaf);backing.append(group);sprigs.push(group);
+      });
       [[124,310],[601,320],[121,400],[571,408]].forEach(([x,y],i)=>{
         const group=el('g');
         group.append(el('path',{d:'M370 470L'+x+' '+y,fill:'none',stroke:'#728448','stroke-width':2}));
