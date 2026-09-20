@@ -25,7 +25,7 @@
     .subtitle { margin:13px 0 0; color:var(--muted); font:italic 16px/1.6 Georgia,serif; min-height:26px; }
     .stage { overflow:hidden; position:relative; flex:none; width:min(850px,calc((100svh - 250px) * 1.16923),100%); min-width:260px; }
     .art { display:block; width:100%; height:auto; aspect-ratio:760/650; overflow:visible; }
-    .gift-hit { position:absolute; left:24%; top:47%; width:53%; height:42%; border:0; border-radius:36%; cursor:pointer; background:transparent; }
+    .gift-hit { position:absolute; left:24%; top:43%; width:53%; height:42%; border:0; border-radius:36%; cursor:pointer; background:transparent; }
     .gift-hit:focus-visible { outline:1px dashed #ad835b; outline-offset:5px; }
     .gift-hit:not(:disabled):hover { background:radial-gradient(ellipse,#ffffff13,transparent 65%); }
     .controls { text-align:center; min-height:75px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:8px; position:relative; z-index:2; }
@@ -93,8 +93,9 @@
           <clipPath id="above-box"><path d="M40 30H730V470H40Z"/></clipPath>
         </defs>
         <ellipse id="ambient" cx="380" cy="290" rx="325" ry="282" fill="url(#sunlight)" opacity=".22"/>
+        <ellipse id="gift-floor-shadow" cx="399" cy="603" rx="210" ry="27" fill="url(#floor)"/>
         <g id="gift-carried"><g id="world">
-          <ellipse cx="399" cy="603" rx="246" ry="32" fill="url(#floor)"/>
+          
           <g id="lid-shadow" opacity="0"><ellipse cx="595" cy="584" rx="115" ry="19" fill="url(#floor)"/></g>
           <!-- The lid is behind the flowers and box when it comes to rest. -->
           <g id="lid" filter="url(#box-shadow)">
@@ -151,18 +152,20 @@
           <path d="M31 12Q48 34 37 60Q18 57 22 32Z" fill="#201e1b" stroke="none"/>
           <g id="snoopy-arm-back"><path d="M-20-23Q-59-9-101-39" fill="none" stroke="#201e1b" stroke-width="22"/><path d="M-20-23Q-59-9-101-39" fill="none" stroke="#fffdfa" stroke-width="14"/><ellipse cx="-104" cy="-40" rx="12" ry="13" fill="#fffdfa"/></g>
           <g id="snoopy-head">
-            <path d="M-15-57C-27-65-34-72-48-75C-105-73-126-98-121-131C-118-163-91-178-52-175C-26-175-21-181-4-190C32-211 74-190 85-151C100-110 93-76 70-61C46-48 25-49 12-40Z" fill="#fffdfa"/>
-            <path d="M68-145C44-125 37-90 44-68C53-44 82-57 89-87C96-112 84-139 79-148C72-154 70-150 68-145Z" fill="#201e1b"/>
-            <path d="M67-139Q47-103 49-78" fill="none" stroke="#fffdfa" stroke-width="3"/>
-            <ellipse cx="-105" cy="-126" rx="14" ry="10" fill="#201e1b" stroke="none"/>
-            <ellipse cx="-50" cy="-145" rx="4" ry="8" fill="#201e1b" stroke="none"/>
-            <path d="M-24-167Q-18-174-12-165M-96-104Q-65-75-28-101" fill="none" stroke-width="3"/>
-            <path d="M-32-107Q-24-108-24-99" fill="none" stroke-width="2.5"/>
-            <path d="M-6-190Q-17-199-24-191" fill="none" stroke-width="3"/>
+            <path d="M-18-49C-19-66-40-68-59-78C-101-82-129-103-132-137C-137-177-108-201-67-203C-42-204-29-198-5-211C29-240 69-218 80-181C88-159 100-146 100-115C99-84 81-64 50-63C26-62 13-52 10-39Z" fill="#fffdfa"/>
+            <path d="M77-156C53-142 37-110 39-83C40-53 70-51 86-77C104-108 91-143 85-155C83-163 78-164 77-156Z" fill="#201e1b"/>
+            <path d="M72-147Q43-110 45-84Q49-62 65-68" fill="none" stroke="#fffdfa" stroke-width="3"/>
+            <ellipse cx="-84" cy="-151" rx="15" ry="10" fill="#201e1b" stroke="none"/>
+            <ellipse cx="-38" cy="-173" rx="4.6" ry="9" fill="#201e1b" stroke="none"/>
+            <ellipse cx="-13" cy="-170" rx="4.6" ry="9" fill="#201e1b" stroke="none"/>
+            <path d="M-4-207Q3-213 8-205M-3-213Q-16-227-24-216" fill="none" stroke-width="3"/>
+            <path d="M-99-115Q-102-128-108-118C-111-110-103-102-98-98Q-44-65 5-103Q14-113 8-123C5-130 4-119 0-115Q-44-83-91-109Z" fill="#fffdfa" stroke-width="3.4"/>
+            <path d="M-98-110L-102-101M-83-104L-86-92M-67-99L-68-85M-50-97L-49-81M-33-98L-30-83M-16-103L-11-91M-2-111L5-102" fill="none" stroke-width="2.4"/>
           </g>
-          <path d="M-23-48L28-39" fill="none" stroke="#aa534f" stroke-width="9"/>
-          <g id="snoopy-arm-front"><path d="M10-25Q-21-11-69-30" fill="none" stroke="#201e1b" stroke-width="25"/><path d="M10-25Q-21-11-69-30" fill="none" stroke="#fffdfa" stroke-width="17"/>
-          <path d="M-69-39C-83-57-94-49-89-37C-110-43-113-28-96-25C-111-15-100-5-88-16C-87 0-72-4-74-19L-64-22Z" fill="#fffdfa" stroke-width="3.5"/></g>
+          <path d="M-23-48L20-40" fill="none" stroke="#201e1b" stroke-width="7"/>
+          <g id="snoopy-arm-front">
+            <path d="M13-32C-6-30-37-35-65-43C-66-55-63-64-72-67C-82-70-87-60-87-53C-103-66-115-61-115-52C-116-45-109-42-103-39C-123-39-121-23-108-24L-100-26C-108-10-94-4-84-19L-78-27C-44-16-16-8 13-7" fill="#fffdfa" stroke-width="4"/>
+          </g>
         </g>
         <g id="celebration" pointer-events="none" aria-hidden="true"></g>
       </svg>
@@ -486,10 +489,11 @@
         $('snoopy').setAttribute('transform','translate('+round(600+270*(1-walk))+' '+round(461+(walking?Math.abs(Math.sin(time/125))*3:0))+') scale(1.2)');
         $('snoopy-leg-front').setAttribute('transform','rotate('+stride+' -9 67)');
         $('snoopy-leg-back').setAttribute('transform','rotate('+(-stride)+' 20 67)');
-        $('snoopy-arm-front').setAttribute('transform','rotate('+round(mix(-62,0,reach)+lift*12)+' 10 -25)');
-        $('snoopy-arm-back').setAttribute('transform','rotate('+round(mix(-55,0,reach)+lift*12)+' -20 -23)');
+        $('snoopy-arm-front').setAttribute('transform','rotate('+round(mix(-62,-40,reach)+lift*40)+' 10 -25)');
+        $('snoopy-arm-back').setAttribute('transform','rotate('+round(mix(-55,-40,reach)+lift*40)+' -20 -23)');
         $('snoopy-head').setAttribute('transform','rotate('+round(Math.sin(reach*Math.PI)*7-lift*3)+' 0 -57)');
-        $('gift-carried').setAttribute('transform','translate(0 '+round(-45*lift)+')');
+        $('gift-floor-shadow').setAttribute('opacity',String(1-.45*lift));
+        $('gift-carried').setAttribute('transform','translate(0 '+round(-95*lift)+')');
       }
       function finishIntroduction(){
         cancelAnimationFrame(introFrame);introductionDone=true;poseSnoopy(4050);
