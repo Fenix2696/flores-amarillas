@@ -63,6 +63,28 @@
       .controls { min-height:58px; }
     }
     @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation:none!important; transition:none!important; } }
+
+    .letter { position:absolute; left:35%; top:calc(93% - 72px); width:100px; height:72px; z-index:3; border:1px solid #c5a26c; border-radius:5px; background:linear-gradient(145deg,#fff8e8,#ecd6b5); box-shadow:0 8px 15px #70553433; cursor:pointer; color:#845b42; animation:letter-drop 1.5s cubic-bezier(.22,.65,.35,1) both; }
+    .letter::before { content:""; position:absolute; inset:0; background:#fff4dc; clip-path:polygon(0 0,100% 0,50% 58%); border-radius:4px; }
+    .letter::after { content:"♥"; position:absolute; top:24px; left:40px; color:#a6565d; font-size:23px; }
+    .letter span { position:absolute; top:78px; left:-30px; right:-30px; font:italic 13px Georgia,serif; white-space:nowrap; }
+    @keyframes letter-drop { 0% { opacity:0; transform:translate(15px,-230px) rotate(-24deg); } 25% { opacity:1; } 65% { transform:translate(-12px,-35px) rotate(12deg); } 100% { transform:translate(0,0) rotate(-7deg); } }
+    .video-dialog { width:min(600px,94vw); max-height:94svh; padding:40px 26px 22px; overflow:auto; border:1px solid #ccac6b; border-radius:24px; background:#fff8e9; color:#594331; box-shadow:0 24px 100px #30221366; }
+    .video-dialog::backdrop { background:#34261ee0; backdrop-filter:blur(5px); }
+    .video-dialog h2 { position:relative; z-index:2; text-align:center; margin:0 0 15px; font:italic 25px Georgia,serif; }
+    .video-frame { position:relative; border:5px solid #e6cd8a; border-radius:15px; padding:6px; background:#e8d9b6; box-shadow:0 0 0 1px #aa853e; }
+    .video-frame video { display:block; width:100%; max-height:66svh; border-radius:8px; background:#161411; object-fit:contain; }
+    .close-video { position:absolute; z-index:5; top:7px; right:10px; width:34px; height:34px; border:0; border-radius:50%; background:#fff8e9; font-size:25px; cursor:pointer; }
+    .frame-flowers { position:absolute; z-index:2; width:94px; height:94px; pointer-events:none; }
+    .frame-flowers.tl { top:-33px; left:-29px; } .frame-flowers.tr { top:-33px; right:-29px; transform:rotate(90deg); }
+    .frame-flowers.bl { bottom:-31px; left:-29px; transform:rotate(-90deg); } .frame-flowers.br { bottom:-31px; right:-29px; transform:rotate(180deg); }
+    .petal-rain { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:3; border-radius:24px; }
+    .petal-rain i { position:absolute; top:-30px; width:11px; height:18px; border-radius:85% 12% 75% 25%; background:linear-gradient(135deg,#ffe39b,#eebc37); opacity:0; animation:petal-rain var(--duration) linear var(--delay) infinite; }
+    .petal-rain i:nth-child(3n) { background:linear-gradient(135deg,#ffd7dc,#e89eaf); }
+    @keyframes petal-rain { 0% { opacity:0; transform:translate(0,-20px) rotate(0); } 8% { opacity:.85; } 85% { opacity:.7; } 100% { opacity:0; transform:translate(var(--drift),95vh) rotate(430deg); } }
+    .video-note { margin:20px 0 0; text-align:center; font:italic 14px Georgia,serif; }
+    @media(max-width:450px) { .letter { top:calc(93% - 56px); width:80px; height:56px; } .letter::after { top:16px; left:30px; } .letter span { top:61px; font-size:11px; } .video-dialog { padding:43px 20px 22px; } }
+    @media(prefers-reduced-motion:reduce) { .letter { animation:none; } .petal-rain { display:none; } }
   </style>
 </head>
 <body>
@@ -172,6 +194,7 @@
         <g id="celebration" pointer-events="none" aria-hidden="true"></g>
       </svg>
       <button class="gift-hit" id="open-gift" aria-label="Abrir el regalo de flores amarillas" aria-describedby="hint" disabled></button>
+      <button class="letter" id="open-letter" hidden aria-label="Abrir la carta y ver tu video"><span>Una carta para ti</span></button>
     </div>
     <div class="controls">
       <p class="hint" id="hint">Toca el regalo</p>
@@ -184,6 +207,19 @@
     <p id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
     <noscript>Estas flores amarillas son para ti. Para ver cómo se abre tu regalo, activa JavaScript en el navegador.</noscript>
   </main>
+  <dialog class="video-dialog" id="video-dialog" aria-labelledby="video-heading">
+    <button class="close-video" id="close-video" aria-label="Cerrar video">×</button>
+    <h2 id="video-heading">Un pedacito de mi corazón</h2>
+    <div class="video-frame">
+      <video id="gift-video" controls playsinline preload="none" src="assets/gatito.mp4"></video>
+      <svg class="frame-flowers tl" viewBox="0 0 100 100" aria-hidden="true"></svg>
+      <svg class="frame-flowers tr" viewBox="0 0 100 100" aria-hidden="true"></svg>
+      <svg class="frame-flowers bl" viewBox="0 0 100 100" aria-hidden="true"></svg>
+      <svg class="frame-flowers br" viewBox="0 0 100 100" aria-hidden="true"></svg>
+    </div>
+    <p class="video-note">El mejor regalo fue coincidir contigo</p>
+    <div class="petal-rain" id="petal-rain" aria-hidden="true"></div>
+  </dialog>
   <script>
     'use strict';
     (() => {
@@ -431,6 +467,7 @@
       }
       function announce(message){$('announcement').textContent=message;}
       function finish(){
+        $('open-letter').hidden=false;
         cancelAnimationFrame(raf);raf=0;previousTime=null;elapsed=duration;render(duration);setPhase('open');paused=false;
         $('heading').innerHTML='Para mi Karencita,<br><em>la dueña de mi sonrisa<br>y de mi corazón ❤️</em>';
         $('subtitle').textContent='Ojalá te hagan sonreír tanto como tú a mí.';$('subtitle').hidden=false;
@@ -447,6 +484,7 @@
         raf=requestAnimationFrame(tick);
       }
       function reset(){
+        $('open-letter').hidden=true;
         cancelAnimationFrame(raf);raf=0;previousTime=null;elapsed=0;paused=false;resumeOnVisible=false;setPhase('closed');
         plants.forEach(p=>p.lastBloom=-1);render(0);
         $('heading').innerHTML='Tengo algo <em>para ti</em>';
@@ -476,6 +514,27 @@
       motionPreference.addEventListener('change',()=>{
         if(motionPreference.matches&&phase==='opening')finish();
       });
+      const videoDialog=$('video-dialog'), giftVideo=$('gift-video');
+      $('open-letter').addEventListener('click',()=>{
+        videoDialog.showModal();
+        giftVideo.play().catch(()=>{ /* Native play control stays available. */ });
+      });
+      $('close-video').addEventListener('click',()=>videoDialog.close());
+      videoDialog.addEventListener('close',()=>giftVideo.pause());
+      videoDialog.addEventListener('click',event=>{if(event.target===videoDialog){const r=videoDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)videoDialog.close();}});
+      document.querySelectorAll('.frame-flowers').forEach(svg=>{
+        [[25,48,-35],[52,26,30],[70,56,60]].forEach(([x,y,r])=>svg.append(el('ellipse',{cx:x,cy:y,rx:10,ry:23,fill:'#718b52',transform:'rotate('+r+' '+x+' '+y+')'})));
+        [[34,34,19,false],[62,60,15,true],[26,70,11,false]].forEach(([x,y,size,pink])=>{
+          const flower=el('g',{transform:'translate('+x+' '+y+')'});
+          for(let n=0;n<10;n++)flower.append(el('ellipse',{cx:0,cy:-size*.55,rx:size*.32,ry:size*.63,fill:pink?'#edb1b9':'#f5cf51',stroke:pink?'#d58b98':'#d4a631','stroke-width':.7,transform:'rotate('+n*36+')'}));
+          flower.append(el('circle',{r:size*.32,fill:pink?'#cb8190':'#79552f'}));svg.append(flower);
+        });
+      });
+      for(let i=0;i<26;i++){
+        const petal=document.createElement('i');
+        petal.style.cssText='left:'+((i*37)%100)+'%;--duration:'+(7+i%5)+'s;--delay:'+(-i*.59)+'s;--drift:'+(i%2?45:-38)+'px';
+        $('petal-rain').append(petal);
+      }
       function poseSnoopy(time){
         const walk=smooth(time/2450), reach=smooth((time-2450)/750), lift=smooth((time-3200)/850);
         const walking=time<2450, stride=walking?Math.sin(time/125)*15*(1-smooth((time-2000)/450)):0;
