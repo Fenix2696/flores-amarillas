@@ -23,7 +23,7 @@
     h1 { font:400 clamp(34px,4.4vw,53px)/1.13 Georgia,"Times New Roman",serif; letter-spacing:-.035em; margin:0; min-height:1.15em; }
     h1 em { font-weight:400; color:#99703c; }
     .subtitle { margin:13px 0 0; color:var(--muted); font:italic 16px/1.6 Georgia,serif; min-height:26px; }
-    .stage { position:relative; flex:none; width:min(760px,calc((100svh - 305px) * 1.16923),100%); min-width:260px; }
+    .stage { position:relative; flex:none; width:min(850px,calc((100svh - 250px) * 1.16923),100%); min-width:260px; }
     .art { display:block; width:100%; height:auto; aspect-ratio:760/650; overflow:visible; }
     .gift-hit { position:absolute; left:24%; top:32%; width:53%; height:46%; border:0; border-radius:36%; cursor:pointer; background:transparent; }
     .gift-hit:focus-visible { outline:1px dashed #ad835b; outline-offset:5px; }
@@ -73,7 +73,7 @@
     <div class="stage">
       <svg class="art" id="art" viewBox="0 0 760 650" role="img" aria-labelledby="art-title art-description">
         <title id="art-title">Un regalo esperando a que lo abras</title>
-        <desc id="art-description">Una caja color rosa empolvado con un lazo de satén. Al abrirla, siete capullos amarillos se elevan y despliegan sus pétalos hasta formar un ramo.</desc>
+        <desc id="art-description">Una caja color rosa empolvado con un lazo de satén. Al abrirla, doce flores de distintas variedades se elevan y despliegan sus pétalos hasta formar un ramo.</desc>
         <defs>
           <radialGradient id="sunlight"><stop stop-color="#ffe8a1" stop-opacity=".65"/><stop offset=".62" stop-color="#efdaae" stop-opacity=".17"/><stop offset="1" stop-color="#efdaae" stop-opacity="0"/></radialGradient>
           <radialGradient id="floor"><stop stop-color="#7b6550" stop-opacity=".24"/><stop offset="1" stop-color="#7b6550" stop-opacity="0"/></radialGradient>
@@ -86,7 +86,7 @@
           <linearGradient id="petal-front" x1="0" y1="1" x2=".7" y2="0"><stop stop-color="#b87a16"/><stop offset=".32" stop-color="#e8b230"/><stop offset=".68" stop-color="#f8d35b"/><stop offset="1" stop-color="#fff0ac"/></linearGradient>
           <linearGradient id="leaf-color"><stop stop-color="#455d38"/><stop offset=".52" stop-color="#6c8450"/><stop offset="1" stop-color="#a3b773"/></linearGradient>
           <linearGradient id="stem-color"><stop stop-color="#4c6340"/><stop offset=".48" stop-color="#849459"/><stop offset="1" stop-color="#4c6740"/></linearGradient>
-          <radialGradient id="flower-center" cx=".4" cy=".32"><stop stop-color="#c89b42"/><stop offset=".64" stop-color="#9f702d"/><stop offset="1" stop-color="#765027"/></radialGradient>
+          <radialGradient id="flower-center" cx=".4" cy=".32"><stop stop-color="#654226"/><stop offset=".64" stop-color="#46311f"/><stop offset="1" stop-color="#30291d"/></radialGradient>
           <filter id="head-shadow" x="-35%" y="-35%" width="170%" height="170%"><feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="#6d4f25" flood-opacity=".2"/></filter>
           <filter id="box-shadow" x="-35%" y="-40%" width="175%" height="190%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#68513d" flood-opacity=".16"/></filter>
           <filter id="soften"><feGaussianBlur stdDeviation="5"/></filter>
@@ -112,7 +112,7 @@
             <ellipse id="inner-light" cx="389" cy="435" rx="112" ry="22" fill="#ffdda0" opacity="0"/>
           </g>
           <g id="garden" clip-path="url(#above-box)">
-            <g id="stems"></g>
+            <g id="stems"></g><g id="foliage"></g>
             <g id="leaves"></g>
             <g id="flowers"></g>
           </g>
@@ -141,6 +141,7 @@
             <path id="knot" d="M379 402Q387 396 395 405L393 414Q385 418 378 410Z" fill="url(#ribbon)" stroke-width="3"/>
           </g>
         </g>
+        <g id="celebration" pointer-events="none" aria-hidden="true"></g>
       </svg>
       <button class="gift-hit" id="open-gift" aria-label="Abrir el regalo de flores amarillas" aria-describedby="hint" disabled></button>
     </div>
@@ -201,14 +202,44 @@
       };
       // Back to front: each flower has its own arrival, scale, tilt and trajectory.
       const settings=[
-        {x:331,y:159,s:1.06,r:-13,delay:1800,travel:4400,bloom:3300,side:-1},
-        {x:228,y:232,s:.88,r:-24,delay:2420,travel:4040,bloom:3000,side:-1},
-        {x:433,y:215,s:.96,r:18,delay:2900,travel:4200,bloom:3100,side:1},
-        {x:159,y:308,s:.65,r:-30,delay:3470,travel:3500,bloom:2760,side:-1},
-        {x:303,y:297,s:.98,r:-5,delay:3970,travel:4040,bloom:3080,side:-1},
-        {x:493,y:309,s:.74,r:29,delay:4500,travel:3650,bloom:2800,side:1},
-        {x:402,y:333,s:.87,r:13,delay:4950,travel:3830,bloom:2900,side:1}
+        {x:302,y:164,s:1.05,r:-18,type:'rose',pink:true,delay:1850,travel:4100,bloom:2900,side:-1},
+        {x:423,y:157,s:1.12,r:12,type:'rose',delay:2200,travel:4200,bloom:3000,side:1},
+        {x:191,y:235,s:1.10,r:-24,type:'rose',pink:true,delay:2500,travel:3900,bloom:2800,side:-1},
+        {x:529,y:244,s:1.03,r:24,type:'rose',delay:2800,travel:3900,bloom:2900,side:1},
+        {x:251,y:208,s:.90,r:-8,type:'carnation',pink:true,delay:3050,travel:3600,bloom:2600,side:-1},
+        {x:475,y:206,s:.87,r:16,type:'carnation',pink:true,delay:3300,travel:3650,bloom:2700,side:1},
+        {x:359,y:260,s:1.57,r:-7,type:'sunflower',delay:2400,travel:4400,bloom:3500,side:-1},
+        {x:164,y:335,s:.88,r:-20,type:'carnation',pink:true,delay:3650,travel:3500,bloom:2600,side:-1},
+        {x:535,y:340,s:1.03,r:25,type:'rose',delay:3900,travel:3700,bloom:2800,side:1},
+        {x:245,y:378,s:1.05,r:-16,type:'rose',delay:4250,travel:3700,bloom:2800,side:-1},
+        {x:443,y:383,s:.98,r:15,type:'carnation',pink:true,delay:4600,travel:3700,bloom:2900,side:1},
+        {x:337,y:408,s:.92,r:8,type:'rose',delay:4900,travel:3700,bloom:2900,side:-1}
       ];
+      const foliage=$('foliage'), sprigs=[];
+      [[124,278],[183,128],[264,101],[462,106],[557,158],[601,294],[121,400],[571,408]].forEach(([x,y],i)=>{
+        const group=el('g');
+        group.append(el('path',{d:'M370 470L'+x+' '+y,fill:'none',stroke:'#728448','stroke-width':2}));
+        for(let j=0;j<10;j++){
+          const t=.35+j*.065, px=mix(370,x,t),py=mix(470,y,t);
+          for(const side of [-1,1]){
+            const w=(1-t)*43+7;
+            group.append(el('path',{d:'M'+px+' '+py+'q'+side*w+' -27 '+side*(w+8)+' -19q'+(-side*5)+' 23 '+(-side*(w+8))+' 19',fill:j%2?'#6f894d':'#91a65c',opacity:.9}));
+          }
+        }
+        foliage.append(group);sprigs.push(group);
+      });
+      for(let i=0;i<16;i++){
+        const angle=i*2.39996, x=360+Math.cos(angle)*(175+i%3*22),y=280+Math.sin(angle)*155;
+        const group=el('g');
+        group.append(el('path',{d:'M370 468Q'+(x+30)+' '+(y+65)+' '+x+' '+y,stroke:'#819151','stroke-width':1.4,fill:'none'}));
+        for(let j=0;j<19;j++){
+          const a=j*2.39996,r=Math.sqrt(j)*5;
+          const bloom=el('g',{transform:'translate('+(x+Math.cos(a)*r)+' '+(y+Math.sin(a)*r)+')'});
+          for(let k=0;k<5;k++)bloom.append(el('ellipse',{cx:0,cy:-2.7,rx:1.8,ry:3.2,fill:j%2?'#f4cb38':'#ffdf69',transform:'rotate('+k*72+')'}));
+          group.append(bloom);
+        }
+        foliage.append(group);sprigs.push(group);
+      }
       const plants=settings.map((config,index)=>{
         const stem=el('path',{class:'stem'}), light=el('path',{class:'stem-light'});
         stems.append(stem,light);
@@ -224,26 +255,39 @@
         const petals=[];
         // Closed shapes form overlapping, upright bud shells. They morph into
         // individually rotated Bézier petals, rather than scaling a flower image.
-        for(let layer=0;layer<2;layer++){
-          for(let i=0;i<13;i++){
-            const angle=(i*360/13+layer*13+index*3)*Math.PI/180;
-            const length=62-layer*9+Math.sin(i*2.8+index)*4;
-            const width=17-layer*2;
+        const rose=config.type==='rose', carnation=config.type==='carnation';
+        const layers=rose?4:carnation?3:2, count=rose?9:carnation?15:18;
+        for(let layer=0;layer<layers;layer++){
+          for(let i=0;i<count;i++){
+            const angle=(i*360/count+layer*19+index*3)*Math.PI/180;
+            const length=(rose?49-layer*9:carnation?48-layer*8:65-layer*10)+Math.sin(i*2.8+index)*4;
+            const width=rose?28-layer*4:carnation?23-layer*3:14-layer;
             const open=[[0,3],[-width*.6,-length*.2],[-width,-length*.69],[-width*.2,-length*.97],[0,-length*1.1],[width,-length*.83],[width*.72,-length*.48],[width*.5,-length*.18],[width*.12,0],[0,3]].map(p=>turn(p,angle));
             const lean=Math.sin(angle)*6, height=41+Math.cos(angle)*5-layer*3;
             const closed=[[0,3],[-6+lean,-9],[-9+lean,-height*.65],[lean-1,-height],[lean+3,-height-4],[lean+10,-height*.7],[lean+7,-height*.4],[lean+5,-8],[1,1],[0,3]];
-            const petal=el('path',{class:'petal',fill:layer?'url(#petal-front)':'url(#petal-back)',d:path(closed)+'Z'});
+            if(carnation){
+              const tip=3, baseOpen=open.slice(0,tip), baseClosed=closed.slice(0,tip);
+              const frill=[];
+              for(let k=0;k<4;k++){
+                const left=-width*.8+k*width*.4;
+                frill.push(turn([left,-length*(k%2?.92:1.02)],angle),turn([left+width*.17,-length*1.13],angle),turn([left+width*.4,-length*.96],angle));
+              }
+              open.splice(3,3,...frill);
+              closed.splice(3,3,...frill.map((_,k)=>[lean-5+k*.8,-height+Math.sin(k)*2]));
+            }
+            const petal=el('path',{class:'petal',fill:config.pink?['#dc8293','#efa3af','#f6b8c0','#ffced0'][layer]:layer?'url(#petal-front)':'url(#petal-back)',d:path(closed)+'Z'});
             const vein=el('path',{class:'petal-vein'});
             head.append(petal,vein);
             petals.push({petal,vein,closed,open,angle,length,offset:layer*270+i*27+Math.sin(i+index)*60});
           }
         }
         const center=el('g');
-        center.append(el('circle',{r:16.5,fill:'url(#flower-center)',stroke:'#d3a345','stroke-width':'1'}));
-        for(let n=0;n<72;n++){
-          const r=1.7*Math.sqrt(n),a=n*2.399963;
-          center.append(el('circle',{cx:round(Math.cos(a)*r),cy:round(Math.sin(a)*r),r:n%3===0?.95:.65,fill:n%3===0?'#efd080':'#704c27',opacity:'.8'}));
+        center.append(el('circle',{r:23,fill:'url(#flower-center)',stroke:'#d3a345','stroke-width':'1'}));
+        for(let n=0;n<130;n++){
+          const r=1.9*Math.sqrt(n),a=n*2.399963;
+          center.append(el('circle',{cx:round(Math.cos(a)*r),cy:round(Math.sin(a)*r),r:n%3===0?.95:.65,fill:n%3===0?'#b59a50':'#251d17',opacity:'.8'}));
         }
+        if(rose||carnation){center.replaceChildren();center.append(el('path',{d:'M-8 2C-13-12 12-17 13-3C14 8-5 12-6 2C-7-5 6-7 6 0C6 5 0 5 0 1',fill:'none',stroke:config.pink?'#c46d86':'#b78621','stroke-width':3,'stroke-linecap':'round'}));}
         head.append(center);
         const sepals=el('g',{fill:'url(#leaf-color)'});
         const sepalLeft=el('path'),sepalRight=el('path');
@@ -253,10 +297,38 @@
         const route=[origin,[origin[0]+config.side*(82+index*3),398-index*4],[config.x-config.side*52,config.y-22],[config.x,config.y]];
         return {...config,root,head,petals,center,stem,light,leafNodes,origin,route,sepalLeft,sepalRight,lastBloom:-1};
       });
+      const celebration=$('celebration'), sparks=[], drifting=[];
+      [[158,210,1400],[590,190,1750],[365,85,2100]].forEach(([x,y,delay],burst)=>{
+        for(let i=0;i<30;i++){
+          const angle=i*Math.PI*2/30, distance=45+(i%5)*14;
+          const node=el('path',{stroke:['#d6a341','#efbb75','#df96a5'][burst],'stroke-width':i%3?1.8:2.5,'stroke-linecap':'round',fill:'none'});
+          celebration.append(node);sparks.push({node,x,y,delay,angle,distance});
+        }
+      });
+      for(let i=0;i<19;i++){
+        const node=el('path',{d:'M0 0C-12-8-11-23 0-26C13-21 10-6 0 0Z',fill:i%3===0?'#efa5b4':'#f4ca4c',stroke:i%3===0?'#d9889a':'#d9a62b','stroke-width':.5});
+        celebration.append(node);drifting.push({node,index:i});
+      }
+      function renderCelebration(time){
+        sparks.forEach(p=>{
+          const age=(time-p.delay)/1450,t=clamp(age),r=p.distance*easeOut(t);
+          const x=p.x+Math.cos(p.angle)*r,y=p.y+Math.sin(p.angle)*r+22*t*t;
+          p.node.setAttribute('d','M'+x+' '+y+'l'+(-Math.cos(p.angle)*mix(15,2,t))+' '+(-Math.sin(p.angle)*mix(15,2,t)));
+          p.node.setAttribute('opacity',age>0&&age<1?Math.sin(Math.PI*t):0);
+        });
+        drifting.forEach(({node,index:i})=>{
+          const age=(time-5800-i*127)/2100,t=clamp(age);
+          const x=190+(i*83)%350+Math.sin(t*5+i)*23, y=220+(i%4)*29+240*t;
+          node.setAttribute('transform','translate('+x+' '+y+') rotate('+(i*37+t*(i%2?180:-160))+') scale('+(.28+i%3*.1)+' '+(.35+Math.abs(Math.cos(t*6+i))*.3)+')');
+          node.setAttribute('opacity',age>0&&age<1?Math.sin(Math.PI*t)*.9:0);
+        });
+      }
       let phase='closed', elapsed=0, raf=0, previousTime=null, paused=false, resumeOnVisible=false;
       const setPhase=value=>{phase=value;$('experience').dataset.state=value;};
       function render(time){
         const shift=smooth(time/1900);
+        sprigs.forEach((g,i)=>{const growth=smooth((time-2900-i*35)/3900);g.setAttribute('transform','translate(370 470) scale('+growth+') translate(-370 -470)');g.setAttribute('opacity',growth);});
+        renderCelebration(time);
         world.setAttribute('transform','translate(0 '+round(-88*(1-shift))+') translate(388 470) scale('+round(mix(1.17,1,shift))+') translate(-388 -470)');
         const untie=smooth((time-120)/1120);
         $('bow-left').setAttribute('d',morph(ribbon.left,ribbon.looseLeft,untie));
@@ -306,6 +378,7 @@
             const centerOpen=smooth((bloom-.26)/.65);
             plant.center.setAttribute('transform','scale('+round(.05+.95*centerOpen)+')');
             plant.center.setAttribute('opacity',String(centerOpen));
+            plant.sepalLeft.parentNode.setAttribute('opacity',String(1-smooth((bloom-.35)/.4)));
             plant.sepalLeft.setAttribute('d',morph([[0,5],[-19,-3],[-17,-27],[-6,-33]],[[0,5],[-15,13],[-30,0],[-29,-7]],bloom)+'Q-8 2 0 5Z');
             plant.sepalRight.setAttribute('d',morph([[0,5],[20,-2],[18,-28],[7,-34]],[[0,5],[16,13],[29,0],[30,-6]],bloom)+'Q8 2 0 5Z');
             plant.lastBloom=morphProgress;
@@ -318,7 +391,7 @@
         $('heading').innerHTML='Estas flores amarillas<br><em>son para ti</em>';
         $('subtitle').textContent='Ojalá te hagan sonreír tanto como tú a mí.';
         $('hint').hidden=true;pause.hidden=true;still.hidden=true;replay.hidden=false;$('signature').hidden=false;
-        art.setAttribute('aria-label','Regalo abierto con un ramo de siete flores amarillas completamente florecidas');
+        art.setAttribute('aria-label','Regalo abierto con un ramo de girasol, rosas amarillas y rosadas, claveles y follaje');
         $('art-title').textContent='Un ramo de flores amarillas, solo para ti';
         announce('Estas flores amarillas son para ti. El regalo está abierto.');
       }
