@@ -22,6 +22,7 @@
     .occasion::before,.occasion::after { content:""; width:27px; height:1px; background:#b496684f; }
     h1 { font:400 clamp(34px,4.4vw,53px)/1.13 Georgia,"Times New Roman",serif; letter-spacing:-.035em; margin:0; min-height:1.15em; }
     h1 em { font-weight:400; color:#99703c; }
+    .experience[data-state="open"] h1 { font-size:clamp(25px,4vw,38px); line-height:1.15; }
     .subtitle { margin:13px 0 0; color:var(--muted); font:italic 16px/1.6 Georgia,serif; min-height:26px; }
     .stage { overflow:hidden; position:relative; flex:none; width:min(850px,calc((100svh - 250px) * 1.16923),100%); min-width:260px; }
     .art { display:block; width:100%; height:auto; aspect-ratio:760/650; overflow:visible; }
@@ -66,7 +67,6 @@
 <body>
   <main class="experience" id="experience" data-state="closed">
     <header class="heading">
-      <p class="occasion">21 de septiembre <span aria-hidden="true">·</span> solo para ti</p>
       <h1 id="heading">Tengo algo <em>para ti</em></h1>
       <p class="subtitle" id="subtitle">Hay cosas que no caben en palabras.</p>
     </header>
@@ -176,11 +176,9 @@
       <p class="hint" id="hint">Toca el regalo para abrirlo</p>
       <div class="actions" id="actions">
         <button class="quiet" id="skip-intro">Saltar entrada</button>
-        <button class="quiet" id="pause" hidden>Pausar</button>
-        <button class="quiet" id="still" hidden>Ver sin animación</button>
         <button class="replay" id="replay" hidden><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 5a5.5 5.5 0 1 1-1 5M3 1v4h4"/></svg>Volver a abrir el regalo</button>
       </div>
-      <p class="signature" id="signature" hidden>Porque qué bonito es coincidir contigo.</p>
+      <p class="signature" id="signature" hidden>El mejor regalo fue coincidir contigo</p>
     </div>
     <p id="announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
     <noscript>Estas flores amarillas son para ti. Para ver cómo se abre tu regalo, activa JavaScript en el navegador.</noscript>
@@ -213,7 +211,7 @@
       const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
       const duration=10200;
       const art=$('art'), world=$('world'), flowers=$('flowers'), stems=$('stems'), leaves=$('leaves');
-      const hit=$('open-gift'), replay=$('replay'), pause=$('pause'), still=$('still');
+      const hit=$('open-gift'), replay=$('replay');
       const lid=$('lid'), frontLid=$('closed-lid');
       // Keep the shut lid in front of the box until it has lifted clear of the rim.
       for(const child of [...lid.children]) frontLid.append(child.cloneNode(true));
@@ -433,12 +431,12 @@
       function announce(message){$('announcement').textContent=message;}
       function finish(){
         cancelAnimationFrame(raf);raf=0;previousTime=null;elapsed=duration;render(duration);setPhase('open');paused=false;
-        $('heading').innerHTML='Estas flores amarillas<br><em>son para ti</em>';
+        $('heading').innerHTML='Para mi Karencita,<br><em>la dueña de mi sonrisa<br>y de mi corazón ❤️</em>';
         $('subtitle').textContent='Ojalá te hagan sonreír tanto como tú a mí.';
-        $('hint').hidden=true;pause.hidden=true;still.hidden=true;replay.hidden=false;$('signature').hidden=false;
+        $('hint').hidden=true;replay.hidden=false;$('signature').hidden=false;
         art.setAttribute('aria-label','Snoopy sostiene el regalo abierto con un ramo de girasol, rosas amarillas y rosadas, claveles y follaje');
         $('art-title').textContent='Un ramo de flores amarillas, solo para ti';
-        announce('Estas flores amarillas son para ti. El regalo está abierto.');
+        announce('Para mi Karencita, la dueña de mi sonrisa y de mi corazón ❤️. El regalo está abierto.');
       }
       function tick(now){
         if(phase!=='opening'||paused||document.hidden){previousTime=null;raf=0;return;}
@@ -453,8 +451,8 @@
         $('heading').innerHTML='Tengo algo <em>para ti</em>';
         $('subtitle').textContent='Hay cosas que no caben en palabras.';
         $('hint').hidden=false;$('hint').textContent='Toca el regalo para abrirlo';
-        $('signature').hidden=true;replay.hidden=true;pause.hidden=true;pause.textContent='Pausar';
-        pause.setAttribute('aria-pressed','false');still.hidden=motionPreference.matches||!introductionDone;hit.disabled=!introductionDone;hit.hidden=false;
+        $('signature').hidden=true;replay.hidden=true;
+        hit.disabled=!introductionDone;hit.hidden=false;
         art.removeAttribute('aria-label');$('art-title').textContent='Un regalo esperando a que lo abras';
         $('announcement').textContent='';
       }
@@ -464,17 +462,11 @@
         if(withoutMotion||motionPreference.matches){finish();return;}
         setPhase('opening');elapsed=repeating?-700:0;previousTime=null;
         $('hint').textContent='Un momento… lo bonito está floreciendo.';
-        pause.hidden=false;still.hidden=false;announce('Se desata el lazo. Tu regalo está floreciendo.');
+        announce('Se desata el lazo. Tu regalo está floreciendo.');
         raf=requestAnimationFrame(tick);
       }
       hit.addEventListener('click',()=>openGift());
       replay.addEventListener('click',()=>{reset();openGift(false,true);});
-      still.addEventListener('click',()=>{if(phase==='closed')openGift(true);else finish();});
-      pause.addEventListener('click',()=>{
-        paused=!paused;pause.textContent=paused?'Continuar':'Pausar';pause.setAttribute('aria-pressed',String(paused));
-        if(paused){cancelAnimationFrame(raf);raf=0;previousTime=null;}
-        else{previousTime=null;raf=requestAnimationFrame(tick);}
-      });
       // Never spend battery animating a hidden page; continue from the same frame.
       document.addEventListener('visibilitychange',()=>{
         if(document.hidden){resumeOnVisible=phase==='opening'&&!paused;cancelAnimationFrame(raf);raf=0;previousTime=null;}
@@ -482,7 +474,6 @@
       });
       motionPreference.addEventListener('change',()=>{
         if(motionPreference.matches&&phase==='opening')finish();
-        if(phase==='closed')still.hidden=motionPreference.matches;
       });
       function poseSnoopy(time){
         const walk=smooth(time/2450), reach=smooth((time-2450)/750), lift=smooth((time-3200)/850);
@@ -499,7 +490,7 @@
       }
       function finishIntroduction(){
         cancelAnimationFrame(introFrame);introductionDone=true;poseSnoopy(4050);
-        $('skip-intro').hidden=true;hit.disabled=false;still.hidden=motionPreference.matches;
+        $('skip-intro').hidden=true;hit.disabled=false;
         $('hint').textContent='Snoopy tiene algo para ti. Toca el regalo.';
         announce('Snoopy sostiene tu regalo. Tócalo para abrirlo.');
       }
